@@ -1432,11 +1432,19 @@ input, select, textarea {
     color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* 어떤 배경에서도 글자가 잘 보이도록 그림자를 추가합니다 */
+/* 뷰어 내부의 그림 설명(제목, 본문)에만 그림자를 적용합니다 */
 #viewer .inner .caption h2, 
 #viewer .inner .caption p {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    color: #ffffff !important; /* 글자는 하얀색으로 고정 */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 
+                 1px 1px 3px rgba(0, 0, 0, 1) !important;
+    color: #ffffff !important;
+    margin-bottom: 0.5em !important;
+}
+
+/* 텍스트 가독성을 위해 하단에만 살짝 어두운 막을 형성합니다 */
+#viewer .inner .caption {
+    background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%) !important;
+    pointer-events: none; /* 클릭 방해 금지 */
 }
 
 
