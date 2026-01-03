@@ -20,7 +20,9 @@
 						<ul class="icons" style="justify-content: flex-end; width: 100%; margin: 0; padding: 0; list-style: none; display: flex;">
 							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="https://www.instagram.com/freecia_illustrator" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="https://www.behance.net/heejinseo5" target="_blank" class="icon brands fa-behance"><span class="label">Behance</span></a></li>
-							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="javascript:void(0);" onclick="copyEmail();" class="icon fa-envelope"><span class="label">Email</span></a></li>
+							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="#" id="email-copy-btn" class="icon fa-envelope" title="Copy Email Address">
+    <span class="label">Email</span>
+</a></li>
 						</ul>
 					</header>
 
@@ -143,22 +145,27 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/main.js"></script>
 <script>
-function copyEmail() {
-    // 작가님의 실제 이메일 주소로 꼭 수정해주세요!
-    const emailAddr = "freecia9834@gmail.com"; 
+document.getElementById('email-copy-btn').addEventListener('click', function(event) {
+    // 1. 클릭 시 페이지가 위로 튀는 현상을 막아줍니다.
+    event.preventDefault(); 
     
-    navigator.clipboard.writeText(emailAddr).then(() => {
-        // 작가님이 선택하신 영문 메시지로 나타납니다.
+    // 2. 작가님의 이메일 주소를 여기에 정확히 입력해 주세요.
+    const myEmail = "freecia9834@gmail.com"; 
+
+    // 3. 복사 실행
+    navigator.clipboard.writeText(myEmail).then(function() {
+        // 4. 성공 시 알림 (작가님이 선택하신 영어 문구)
         alert("Email address copied! Feel free to paste it.");
-    }).catch(err => {
-        // 복사 실패 시 메일 앱이라도 열리도록 안전장치를 합니다.
-        window.location.href = "mailto:" + emailAddr;
+    }).catch(function(err) {
+        // 5. 만약 복사 기능이 차단된 경우, 최후의 수단으로 메일 프로그램을 엽니다.
+        window.location.href = "mailto:" + myEmail;
     });
-}
+});
 </script>
 	
 	</body>
 </html>
+
 
 
 
