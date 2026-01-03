@@ -1376,8 +1376,8 @@ input, select, textarea {
 
 /* 3. 오른쪽 썸네일 박스 크기 고정 및 이미지 정렬 */
 #thumbnails article {
-    width: 50% !important;  /* 가로 2줄 유지 */
-    height: 250px !important; /* 박스 높이를 일정하게 고정 */
+    width: 40% !important;  /* 가로 2줄 유지 */
+    height: 180px !important; /* 박스 높이를 일정하게 고정 */
     overflow: hidden !important;
     background-color: #252626 !important;
 }
@@ -1387,6 +1387,12 @@ input, select, textarea {
     height: 100% !important;
 }
 
+/* 47개의 썸네일이 끊기지 않고 자연스럽게 나열되도록 설정 */
+#thumbnails {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+}
 #thumbnails article .thumbnail img {
     width: 100% !important;
     height: 100% !important;
@@ -1425,3 +1431,4 @@ input, select, textarea {
 #header p, #header .icons a {
     color: rgba(255, 255, 255, 0.7) !important;
 }
+
