@@ -1411,73 +1411,40 @@ input, select, textarea {
 }
 
 
-/* --- 프리시아 작가님의 슬라이드 화살표 디자인 커스텀 --- */
+/* --- 프리시아 작가님의 포트폴리오를 위한 강제 활성화 코드 --- */
 
-/* 1. 평소 메인 화면에서는 화살표 영역을 완전히 투명하게 만듭니다 (겹침 방지) */
-#viewer .nav-next,
-#viewer .nav-previous {
-    opacity: 0;
-    -moz-transition: opacity 0.5s ease;
-    -webkit-transition: opacity 0.5s ease;
-    -ms-transition: opacity 0.5s ease;
-    transition: opacity 0.5s ease;
+/* 1. 화살표 강제 노출 */
+#viewer .inner .nav-next,
+#viewer .inner .nav-previous {
+    display: flex !important; /* 강제로 보이게 함 */
+    opacity: 1 !important;    /* 투명도 100% */
+    visibility: visible !important;
+    z-index: 99999 !important; /* 어떤 것보다도 위에 */
+    cursor: pointer !important;
 }
 
-/* 2. 사진을 클릭해서 크게 볼 때만 화살표를 서서히 보여줍니다 */
-body.fullscreen #viewer .nav-next,
-body.fullscreen #viewer .nav-previous {
-    opacity: 1;
-    z-index: 10001; /* 뷰어보다 위에 위치 */
+/* 2. 화살표 디자인 (작가님이 보신 그 동그라미) */
+#viewer .inner .nav-next:before,
+#viewer .inner .nav-previous:before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    width: 4rem !important;
+    height: 4rem !important;
+    margin-top: -2rem !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 50% !important;
+    border: 2px solid #00D3B7 !important; /* 작가님 브랜드 컬러 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-/* 3. 화살표 모양 디자인 (가운데 동그라미 배경 추가) */
-#viewer .nav-next:before,
-#viewer .nav-previous:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
-    margin-top: -1.75rem;
-    background-color: rgba(0, 0, 0, 0.35); /* 반투명 블랙 */
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
+#viewer .inner .nav-previous:before { left: 2rem !important; content: '‹' !important; color: white !important; font-size: 3rem !important; }
+#viewer .inner .nav-next:before { right: 2rem !important; content: '›' !important; color: white !important; font-size: 3rem !important; }
 
-/* 왼쪽 화살표 디테일 */
-#viewer .nav-previous:before {
-    left: 2rem;
-    content: '‹'; /* 텍스트 화살표 사용 */
-    color: white;
-    font-size: 2.2rem;
-    line-height: 3.1rem;
-    text-align: center;
-}
-
-/* 오른쪽 화살표 디테일 */
-#viewer .nav-next:before {
-    right: 2rem;
-    content: '›';
-    color: white;
-    font-size: 2.2rem;
-    line-height: 3.1rem;
-    text-align: center;
-}
-
-/* 마우스 올렸을 때 강조 효과 */
-#viewer .nav-next:hover:before,
-#viewer .nav-previous:hover:before {
-    background-color: rgba(0, 211, 183, 0.7); /* 작가님 포인트 컬러 */
-    transform: scale(1.1);
-}
-
-/* PC 환경에서 사이드바와 겹치지 않게 화살표 위치 미세 조정 */
-@media screen and (min-width: 1281px) {
-    #viewer .nav-next:before {
-        right: 3rem; 
-    }
+/* 3. 메인 화면에서는 안 보이게 처리 */
+body:not(.fullscreen) #viewer .inner .nav-next,
+body:not(.fullscreen) #viewer .inner .nav-previous {
+    display: none !important;
 }
