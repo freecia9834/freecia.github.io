@@ -1190,22 +1190,36 @@ input, select, textarea {
 		}
 
 			#viewer .slide .caption {
-				background-image: -moz-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-				background-image: -webkit-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-				background-image: -ms-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-				background-image: linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-				padding: 2em 2em 0.75em 2em ;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				color: rgba(255, 255, 255, 0.5);
-				z-index: 1;
-			}
+    /* 1. 배경색을 아예 없애거나(transparent) 극도로 낮춰 박스 현상을 제거합니다. */
+    background: transparent !important; 
+    
+    /* 2. 작가님의 의견대로 블러를 4px로 조절하여 그림 침해를 최소화합니다. */
+    backdrop-filter: blur(4px); 
+    -webkit-backdrop-filter: blur(4px);
+    
+    padding: 2em;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    width: auto;
+    max-width: 90%;
+    z-index: 10;
+}
 
-				#viewer .slide .caption h2, #viewer .slide .caption h3, #viewer .slide .caption h4, #viewer .slide .caption h5, #viewer .slide .caption h6 {
-					color: #fff;
-				}
+#viewer .slide .caption h2 {
+    color: #ffffff !important;
+    /* 3. 블러가 약해진 만큼, 글자 자체에 아주 얇고 섬세한 그림자를 주어 가독성을 보강합니다. */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,1) !important;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+}
+
+#viewer .slide .caption p {
+    color: #ffffff !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.8) !important;
+    font-size: 0.95em;
+    font-weight: 400;
+}
 			#viewer .slide .image {
 				-moz-transition: opacity 0.5s ease-in-out;
 				-webkit-transition: opacity 0.5s ease-in-out;
@@ -1445,6 +1459,7 @@ input, select, textarea {
     background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%) !important;
     pointer-events: none; /* 클릭 방해 금지 */
 }
+
 
 
 
