@@ -968,11 +968,12 @@ input, select, textarea {
 	}
 
 		#thumbnails article {
-			position: relative;
-			width: 50%;
-			background-color: #252626 !important;
-			outline: 0;
-		}
+    position: relative;
+    width: calc(50% - 4px) !important; 
+    margin: 2px !important; 
+    background-color: #252626 !important;
+    outline: 0;
+}
 
 			#thumbnails article .thumbnail {
 				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1472,6 +1473,7 @@ input, select, textarea {
     font-style: italic;      /* 세련된 느낌을 위해 기울임꼴 (선택사항) */
     letter-spacing: 0.05em;  /* 가독성을 위한 자간 조정 */
 }
+
 
 
 
