@@ -147,21 +147,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/main.js"></script>
 
-			<script>
-				$(document).ready(function() {
-					// 뷰어 안에 화살표를 생성합니다.
-					$('<div class="nav-previous"></div>').appendTo('#viewer');
-					$('<div class="nav-next"></div>').appendTo('#viewer');
-
-					// 화살표를 누르면 다음/이전 사진으로 이동하게 합니다.
-					$(document).on('click', '.nav-next', function() {
-						if (window._viewer) window._viewer._next();
-					});
-					$(document).on('click', '.nav-previous', function() {
-						if (window._viewer) window._viewer._previous();
-					});
-				});
-			</script>
-
 	</body>
 </html>
+
