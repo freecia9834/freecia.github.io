@@ -74,12 +74,6 @@ input, select, textarea {
 
 /* Basic */
 
-	/*
-			@-ms-viewport {
-				width: device-width;
-			}
-		*/
-
 	@media screen and (max-width: 480px) {
 
 		html, body {
@@ -1349,3 +1343,23 @@ input, select, textarea {
 				}
 
 		}
+
+/* --- 여기서부터 Freecia 작가님을 위한 추가 최적화 코드입니다 --- */
+
+/* 1. 썸네일 이미지가 잘리지 않게 설정 */
+#thumbnails article .thumbnail img {
+    object-fit: contain !important; 
+    height: 300px;                  
+    background-color: #252626;      
+}
+
+/* 2. 썸네일 박스 배경색 통일 */
+#thumbnails article {
+    background-color: #252626 !important;
+}
+
+/* 3. 슬라이드 뷰어에서도 이미지가 잘리지 않게 설정 */
+#viewer .slide .image {
+    background-size: contain !important; 
+    background-position: center !important;
+}
