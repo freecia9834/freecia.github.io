@@ -1348,3 +1348,66 @@ input, select, textarea {
 				}
 
 		}
+
+
+/* --- 프리시아 작가님의 요청으로 추가된 커스텀 코드 시작 --- */
+
+/* 1. 메인 뷰어 그림 크기를 80%로 축소 및 중앙 배치 */
+#viewer .slide img {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 80% !important;  /* 작가님 요청: 80% 크기 */
+    height: 80% !important; /* 작가님 요청: 80% 크기 */
+    transform: translate(-50%, -50%) !important;
+    object-fit: contain !important;
+}
+
+/* 2. 그림 제목(Caption)을 그림 하단 시작점에 정렬 */
+#viewer .caption {
+    position: absolute !important;
+    bottom: 10% !important; /* 하단에서 10% 띄움 */
+    left: 10% !important;   /* 그림이 80%이므로 왼쪽 여백 10%에 맞춤 */
+    width: 80% !important;  /* 그림 가로폭과 동일하게 설정 */
+    text-align: left !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* 3. 오른쪽 썸네일 박스 크기 고정 및 이미지 정렬 */
+#thumbnails article {
+    width: 50% !important;  /* 가로 2줄 유지 */
+    height: 250px !important; /* 박스 높이를 일정하게 고정 */
+    overflow: hidden !important;
+    background-color: #252626 !important;
+}
+
+#thumbnails article .thumbnail {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#thumbnails article .thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; /* 세로 그림도 박스 크기에 맞춰 가운데 정렬 */
+    background-color: #252626 !important; /* 여백 색상 통일 */
+}
+
+/* 모바일 환경 대응 (그림이 너무 작아지지 않게 조정) */
+@media screen and (max-width: 480px) {
+    #viewer .slide img {
+        width: 95% !important;
+        height: 80% !important;
+        top: 40% !important;
+        left: 2.5% !important;
+        transform: translate(0, -50%) !important;
+    }
+    #viewer .caption {
+        left: 5% !important;
+        width: 90% !important;
+        bottom: 5% !important;
+    }
+}
+
+/* --- 프리시아 작가님의 요청으로 추가된 커스텀 코드 끝 --- */
