@@ -970,7 +970,7 @@ input, select, textarea {
 		#thumbnails article {
 			position: relative;
 			width: 50%;
-			background: #101010;
+			background-color: #252626 !important; /* [보정] 썸네일 박스 배경색 강제 고정 */
 			outline: 0;
 		}
 
@@ -985,6 +985,9 @@ input, select, textarea {
 				#thumbnails article .thumbnail img {
 					display: block;
 					width: 100%;
+					height: 300px !important; /* [보정] 썸네일 높이 고정 */
+					object-fit: contain !important; /* [보정] 썸네일 잘림 방지 */
+					background-color: #252626 !important; /* [보정] 썸네일 배경색 */
 				}
 
 				#thumbnails article .thumbnail:before {
@@ -1214,8 +1217,9 @@ input, select, textarea {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-repeat: no-repeat;
-				background-size: cover;
+				background-repeat: no-repeat !important;
+				background-size: contain !important; /* [보정] cover에서 contain으로 변경 */
+				background-position: center !important; /* [보정] 중앙 정렬 */
 				opacity: 0;
 			}
 
@@ -1343,24 +1347,3 @@ input, select, textarea {
 				}
 
 		}
-
-/* --- 프리시아 작가님 사이트 최종 보정 --- */
-
-/* 1. 왼쪽 메인 뷰어 이미지 잘림 절대 방지 */
-#viewer .slide .image {
-    background-size: contain !important; /* 화면에 꽉 채우지 않고 전체가 보이게 함 */
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-}
-
-/* 2. 썸네일 이미지 비율 유지 및 배경색 강제 적용 */
-#thumbnails article .thumbnail img {
-    object-fit: contain !important;
-    height: 300px !important;
-    background-color: #252626 !important; /* 스크린샷에서 확인된 색상 */
-}
-
-/* 3. 썸네일 박스 자체 배경색 고정 */
-#thumbnails article {
-    background-color: #252626 !important;
-}
