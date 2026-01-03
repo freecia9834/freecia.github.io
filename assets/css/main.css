@@ -1344,22 +1344,23 @@ input, select, textarea {
 
 		}
 
-/* --- 여기서부터 Freecia 작가님을 위한 추가 최적화 코드입니다 --- */
+/* --- 프리시아 작가님 사이트 최종 보정 --- */
 
-/* 1. 썸네일 이미지가 잘리지 않게 설정 */
-#thumbnails article .thumbnail img {
-    object-fit: contain !important; 
-    height: 300px;                  
-    background-color: #252626;      
+/* 1. 왼쪽 메인 뷰어 이미지 잘림 절대 방지 */
+#viewer .slide .image {
+    background-size: contain !important; /* 화면에 꽉 채우지 않고 전체가 보이게 함 */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 
-/* 2. 썸네일 박스 배경색 통일 */
+/* 2. 썸네일 이미지 비율 유지 및 배경색 강제 적용 */
+#thumbnails article .thumbnail img {
+    object-fit: contain !important;
+    height: 300px !important;
+    background-color: #252626 !important; /* 스크린샷에서 확인된 색상 */
+}
+
+/* 3. 썸네일 박스 자체 배경색 고정 */
 #thumbnails article {
     background-color: #252626 !important;
-}
-
-/* 3. 슬라이드 뷰어에서도 이미지가 잘리지 않게 설정 */
-#viewer .slide .image {
-    background-size: contain !important; 
-    background-position: center !important;
 }
