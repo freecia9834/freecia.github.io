@@ -1190,34 +1190,35 @@ input, select, textarea {
 		}
 
 			#viewer .slide .caption {
-    /* 1. 그림을 가리는 모든 배경색과 그라데이션을 완전히 투명하게 만듭니다. */
-    background: transparent !important; 
-    padding: 2.5em 2em;
+    /* 1. 사각형 박스를 완전히 없애고, 아주 넓고 투명한 안개를 형성합니다. */
+    background: radial-gradient(circle at bottom left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%) !important; 
+    padding: 3em 2.5em;
     position: absolute;
-    bottom: 5%; /* 그림 하단에서 살짝 위로 올려 여백의 미를 줍니다. */
-    left: 5%;
-    width: 90%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     z-index: 10;
-    pointer-events: none; /* 글자 영역이 마우스 클릭을 방해하지 않도록 설정 */
 }
 
 #viewer .slide .caption h2 {
     color: #ffffff !important;
-    /* 2. 띠를 없애는 대신, 글자 바로 뒤에만 아주 부드러운 '번짐 효과'를 주어 가독성을 확보합니다. */
-    /* 여러 겹의 부드러운 그림자로 고급스러운 깊이감을 만듭니다. */
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 
-                 0 0 20px rgba(0, 0, 0, 0.4) !important;
+    /* 2. 글자 뒤에 아주 미세한 '어두운 입자'가 맺힌 듯한 다중 번짐 효과 */
+    /* 촌스러운 선이 아니라, 글자 주변의 공기를 살짝 어둡게 만듭니다. */
+    text-shadow: 0 0 15px rgba(0,0,0,0.8), 
+                 0 0 30px rgba(0,0,0,0.4),
+                 2px 2px 5px rgba(0,0,0,0.5) !important;
     font-weight: 700;
     letter-spacing: -0.01em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.3em;
 }
 
 #viewer .slide .caption p {
-    color: rgba(255, 255, 255, 0.95) !important;
-    /* 설명글에도 은은한 안개 효과를 주어 세련미를 더합니다. */
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    /* 설명글에도 입자감을 주어 가독성을 확보하면서 세련미를 유지합니다. */
+    text-shadow: 0 0 10px rgba(0,0,0,0.8), 
+                 1px 1px 3px rgba(0,0,0,0.5) !important;
     font-size: 0.9em;
-    line-height: 1.4;
+    font-weight: 400;
 }
 			#viewer .slide .image {
 				-moz-transition: opacity 0.5s ease-in-out;
@@ -1458,6 +1459,7 @@ input, select, textarea {
     background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%) !important;
     pointer-events: none; /* 클릭 방해 금지 */
 }
+
 
 
 
