@@ -1409,3 +1409,19 @@ input, select, textarea {
         bottom: 5% !important;
     }
 }
+
+/* 우측 헤더 영역을 강제로 블랙 배경으로 고정합니다 */
+#main {
+    background-color: #1a1a1a !important; /* 배경색을 아주 어두운 블랙으로 */
+    color: #ffffff !important;           /* 글자색을 흰색으로 */
+}
+
+/* 헤더 안의 제목(Freecia) 글자색도 흰색으로 고정 */
+#header h1, #header h1 strong {
+    color: #ffffff !important;
+}
+
+/* 설명 글귀와 아이콘 색상 조정 */
+#header p, #header .icons a {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
