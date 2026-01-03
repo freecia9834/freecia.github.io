@@ -1411,49 +1411,63 @@ input, select, textarea {
 }
 
 
-/* 화살표 버튼 디자인 */
-.nav-previous, .nav-next {
-    position: fixed;
+/* --- 뷰어 내부 화살표 디자인 최적화 --- */
+
+/* 기존 테마의 내비게이션 영역을 시각화함 */
+#viewer .nav-next,
+#viewer .nav-previous {
+    opacity: 1 !important; /* 항상 보이게 설정 */
+    z-index: 100 !important;
+}
+
+/* 화살표 아이콘 공통 */
+#viewer .nav-next:before,
+#viewer .nav-previous:before {
+    content: '';
+    position: absolute;
     top: 50%;
-    width: 4rem;
-    height: 4rem;
-    margin-top: -2rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    width: 3rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    background-color: rgba(0, 0, 0, 0.4); /* 배경 동그라미 */
     border-radius: 50%;
-    cursor: pointer;
-    z-index: 10001; /* 뷰어보다 위에 있어야 함 */
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-.nav-previous:hover, .nav-next:hover {
-    background-color: rgba(0, 211, 183, 0.5);
+/* 왼쪽 화살표 디테일 */
+#viewer .nav-previous:before {
+    left: 2rem;
+    content: '‹'; /* 텍스트 화살표 사용으로 더 직관적임 */
+    color: white;
+    font-size: 2.5rem;
+    line-height: 2.8rem;
+    text-align: center;
 }
 
-.nav-previous { left: 2rem; }
-.nav-next { right: 24.5em; } /* 사이드바를 피해서 위치 조정 */
-
-/* 화살표 모양 */
-.nav-previous:before, .nav-next:before {
-    content: '';
-    width: 0.8rem;
-    height: 0.8rem;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    display: block;
+/* 오른쪽 화살표 디테일 */
+#viewer .nav-next:before {
+    right: 2rem; /* 사이드바 안쪽으로 위치 고정 */
+    content: '›';
+    color: white;
+    font-size: 2.5rem;
+    line-height: 2.8rem;
+    text-align: center;
 }
 
-.nav-previous:before { transform: rotate(-45deg); margin-left: 0.3rem; }
-.nav-next:before { transform: rotate(135deg); margin-right: 0.3rem; }
+/* 마우스 올렸을 때 반응 */
+#viewer .nav-next:hover:before,
+#viewer .nav-previous:hover:before {
+    background-color: rgba(0, 211, 183, 0.8) !important; /* 포인트 컬러 */
+    transform: scale(1.1);
+}
 
-/* 모바일 화면 조정 */
-@media screen and (max-width: 1280px) {
-    .nav-next { right: 21em; }
+/* 중요: 메인 화면(썸네일 영역) 위에는 화살표가 보이지 않게 처리 */
+body:not(.fullscreen) #viewer .nav-next,
+body:not(.fullscreen) #viewer .nav-previous {
+    display: none !important;
 }
-@media screen and (max-width: 480px) {
-    .nav-next { right: 2rem; }
-}
-/* --- 프리시아 작가님의 요청으로 추가된 커스텀 코드 끝 --- */
 
