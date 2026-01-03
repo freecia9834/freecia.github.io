@@ -152,27 +152,10 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/main.js"></script>
-<script>
-document.getElementById('email-copy-btn').addEventListener('click', function(event) {
-    // 1. 클릭 시 페이지가 위로 튀는 현상을 막아줍니다.
-    event.preventDefault(); 
-    
-    // 2. 작가님의 이메일 주소를 여기에 정확히 입력해 주세요.
-    const myEmail = "freecia9834@gmail.com"; 
-
-    // 3. 복사 실행
-    navigator.clipboard.writeText(myEmail).then(function() {
-        // 4. 성공 시 알림 (작가님이 선택하신 영어 문구)
-        alert("Email address copied! Feel free to paste it.");
-    }).catch(function(err) {
-        // 5. 만약 복사 기능이 차단된 경우, 최후의 수단으로 메일 프로그램을 엽니다.
-        window.location.href = "mailto:" + myEmail;
-    });
-});
-</script>
 	
 	</body>
 </html>
+
 
 
 
