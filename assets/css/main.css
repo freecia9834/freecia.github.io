@@ -1190,35 +1190,35 @@ input, select, textarea {
 		}
 
 			#viewer .slide .caption {
-    /* 1. 사각형 박스를 완전히 없애고, 아주 넓고 투명한 안개를 형성합니다. */
-    background: radial-gradient(circle at bottom left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%) !important; 
+    /* 1. 박스 현상의 원인인 background를 완전히 삭제합니다. */
+    background: none !important; 
     padding: 3em 2.5em;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    bottom: 2%; 
+    left: 2%;
+    width: 96%;
     z-index: 10;
 }
 
 #viewer .slide .caption h2 {
     color: #ffffff !important;
-    /* 2. 글자 뒤에 아주 미세한 '어두운 입자'가 맺힌 듯한 다중 번짐 효과 */
-    /* 촌스러운 선이 아니라, 글자 주변의 공기를 살짝 어둡게 만듭니다. */
-    text-shadow: 0 0 15px rgba(0,0,0,0.8), 
-                 0 0 30px rgba(0,0,0,0.4),
-                 2px 2px 5px rgba(0,0,0,0.5) !important;
+    /* 2. 박스 없이 글자만 띄우는 다층 입체 그림자 기법 */
+    /* 글자 바로 뒤는 진하게, 멀어질수록 부드럽게 퍼뜨려 모던함을 유지합니다. */
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.9), 
+        0 0 15px rgba(0, 0, 0, 0.6), 
+        0 0 30px rgba(0, 0, 0, 0.3) !important;
     font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.3em;
+    letter-spacing: -0.02em;
 }
 
 #viewer .slide .caption p {
-    color: rgba(255, 255, 255, 0.9) !important;
-    /* 설명글에도 입자감을 주어 가독성을 확보하면서 세련미를 유지합니다. */
-    text-shadow: 0 0 10px rgba(0,0,0,0.8), 
-                 1px 1px 3px rgba(0,0,0,0.5) !important;
-    font-size: 0.9em;
+    color: #ffffff !important;
+    /* 설명글 역시 배경을 해치지 않도록 글자 뒤에만 얇은 그림자를 줍니다. */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.5) !important;
+    font-size: 0.95em;
     font-weight: 400;
+    opacity: 0.95;
 }
 			#viewer .slide .image {
 				-moz-transition: opacity 0.5s ease-in-out;
@@ -1459,6 +1459,7 @@ input, select, textarea {
     background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%) !important;
     pointer-events: none; /* 클릭 방해 금지 */
 }
+
 
 
 
