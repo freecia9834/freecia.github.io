@@ -1190,35 +1190,36 @@ input, select, textarea {
 		}
 
 			#viewer .slide .caption {
-    /* 1. 배경색을 아예 없애거나(transparent) 극도로 낮춰 박스 현상을 제거합니다. */
+    /* 1. 배경과 블러를 글자 크기에 딱 맞게 밀착시킵니다. */
     background: transparent !important; 
     
-    /* 2. 작가님의 의견대로 블러를 4px로 조절하여 그림 침해를 최소화합니다. */
-    backdrop-filter: blur(4px); 
-    -webkit-backdrop-filter: blur(4px);
+    /* 2. 블러 강도를 작가님의 요청대로 다시 절반인 2px로 낮춥니다. */
+    backdrop-filter: blur(2px); 
+    -webkit-backdrop-filter: blur(2px);
     
-    padding: 2em;
+    /* 3. 불필요한 하단 여백을 없애기 위해 padding을 최소화하고 위치를 조정합니다. */
+    padding: 0.5em 1em; 
     position: absolute;
-    bottom: 5%;
-    left: 5%;
-    width: auto;
+    bottom: 3%; /* 그림 바닥에서 살짝 띄워 텍스트만 보이게 합니다. */
+    left: 3%;
+    width: fit-content; /* 텍스트 가로 길이만큼만 블러 영역을 설정합니다. */
     max-width: 90%;
     z-index: 10;
 }
 
 #viewer .slide .caption h2 {
     color: #ffffff !important;
-    /* 3. 블러가 약해진 만큼, 글자 자체에 아주 얇고 섬세한 그림자를 주어 가독성을 보강합니다. */
-    text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,1) !important;
+    /* 블러가 매우 약해졌으므로, 글자 자체의 선명도를 위해 최소한의 그림자를 유지합니다. */
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8) !important;
     font-weight: 700;
-    margin-bottom: 0.2em;
+    margin: 0; /* 불필요한 여백 제거 */
 }
 
 #viewer .slide .caption p {
     color: #ffffff !important;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.8) !important;
-    font-size: 0.95em;
-    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8) !important;
+    font-size: 0.9em;
+    margin: 0.2em 0 0 0; /* 위쪽 여백만 살짝 주어 제목과 구분 */
 }
 			#viewer .slide .image {
 				-moz-transition: opacity 0.5s ease-in-out;
@@ -1459,6 +1460,7 @@ input, select, textarea {
     background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%) !important;
     pointer-events: none; /* 클릭 방해 금지 */
 }
+
 
 
 
