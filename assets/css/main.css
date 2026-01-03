@@ -1432,4 +1432,11 @@ input, select, textarea {
     color: rgba(255, 255, 255, 0.7) !important;
 }
 
+/* 어떤 배경에서도 글자가 잘 보이도록 그림자를 추가합니다 */
+#viewer .inner .caption h2, 
+#viewer .inner .caption p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #ffffff !important; /* 글자는 하얀색으로 고정 */
+}
+
 
