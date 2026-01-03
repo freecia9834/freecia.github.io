@@ -1464,6 +1464,14 @@ input, select, textarea {
 
 
 
+.contact-status {
+    text-align: right;       /* 우측 정렬 */
+    font-size: 0.75em;       /* 소개글보다 작은 크기 */
+    color: rgba(255, 255, 255, 0.6); /* 흰색이지만 약간 투명하게 하여 은은하게 노출 */
+    margin-top: 10px;        /* 아이콘과의 간격 */
+    font-style: italic;      /* 세련된 느낌을 위해 기울임꼴 (선택사항) */
+    letter-spacing: 0.05em;  /* 가독성을 위한 자간 조정 */
+}
 
 
 
