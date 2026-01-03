@@ -20,7 +20,9 @@
 						<ul class="icons" style="justify-content: flex-end; width: 100%; margin: 0; padding: 0; list-style: none; display: flex;">
 							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="https://www.instagram.com/freecia_illustrator" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="https://www.behance.net/heejinseo5" target="_blank" class="icon brands fa-behance"><span class="label">Behance</span></a></li>
-							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="mailto:freecia9834@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+							<li style="margin: 0 0 0 1.5em; padding: 0;"><a href="javascript:void(0);" onclick="copyEmail()" title="freecia9834@gmail.com">
+    <span class="label">Email</span>
+</a></li>
 						</ul>
 					</header>
 
@@ -142,9 +144,23 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/main.js"></script>
-
+<script>
+function copyEmail() {
+    // 1. 작가님의 실제 이메일 주소를 아래 따옴표 안에 적어주세요.
+    const email = "freecia9834@gmail.com"; 
+    
+    // 2. 이메일을 클립보드에 복사합니다.
+    navigator.clipboard.writeText(email).then(() => {
+        // 3. 복사가 완료되면 사용자에게 알려줍니다.
+        alert("Email address copied! Feel free to paste it.");
+    }).catch(err => {
+        console.error('복사 실패:', err);
+    });
+}
+</script>
 	</body>
 </html>
+
 
 
 
