@@ -934,19 +934,27 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		padding: 2.25em 2.25em 1em 2.25em ;
-	}
+    padding: 3em 0 !important;
+    text-align: center;
+    background-color: transparent !important;
+}
 
 		#footer .copyright {
-			list-style: none;
-			padding: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem !important; 
+    color: rgba(255, 255, 255, 0.35) !important; 
+    letter-spacing: 0.05em;
 		}
 
 			#footer .copyright li {
-				display: inline-block;
-				font-size: 0.8em;
-				margin-left: 0.35em;
-				padding: 0;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+    border-left: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 			}
 
 				#footer .copyright li:first-child {
@@ -1472,6 +1480,7 @@ input, select, textarea {
     font-style: italic;      /* 세련된 느낌을 위해 기울임꼴 (선택사항) */
     letter-spacing: 0.05em;  /* 가독성을 위한 자간 조정 */
 }
+
 
 
 
