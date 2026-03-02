@@ -11348,10 +11348,6 @@ header.masthead .masthead-heading {
     color: #ffffff !important;
 }
 
-#mainNav.navbar-shrink .navbar-brand {
-    color: #ffffff !important;
-}
-
 /* 4. 마우스 호버 시 포인트 컬러(노란색) 유지 */
 #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
     color: #ffc107 !important;
