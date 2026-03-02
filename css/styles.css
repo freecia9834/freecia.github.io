@@ -11331,10 +11331,6 @@ header.masthead .masthead-heading {
     color: #000000 !important;
 }
 
-/* 3. 상단 왼쪽 로고(ARTFREECIA) 색상 변경 */
-#mainNav .navbar-brand {
-    color: #000000 !important;
-}
 
 /* 마우스 올렸을 때(Hover) 노란색 유지 또는 강조 */
 #mainNav .navbar-nav .nav-item .nav-link:hover {
