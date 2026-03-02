@@ -11336,3 +11336,23 @@ header.masthead .masthead-heading {
 #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #ffc107 !important;
 }
+
+/* 1. 기본 상태 (상단에 있을 때): 블랙 */
+#mainNav .navbar-nav .nav-item .nav-link {
+    color: #000000 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 2. 스크롤 내려갔을 때 (navbar-shrink 활성): 흰색으로 변경 */
+#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+    color: #ffffff !important;
+}
+
+#mainNav.navbar-shrink .navbar-brand {
+    color: #ffffff !important;
+}
+
+/* 4. 마우스 호버 시 포인트 컬러(노란색) 유지 */
+#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+    color: #ffc107 !important;
+}
