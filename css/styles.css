@@ -11375,3 +11375,21 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
 #mainNav.navbar-shrink .nav-link:hover {
     color: #ffc800 !important;
 }
+
+
+/* 모바일 전용 배경 이미지 위치 조정 */
+@media (max-width: 768px) {
+    header.masthead {
+        /* 이미지가 너무 확대되지 않게 하고, 살짝 아래쪽이 보이도록 조정 */
+        background-position: center bottom !important; 
+        background-attachment: scroll !important;
+        padding-top: 8rem !important; /* 텍스트 위치를 살짝 위로 조절 */
+        padding-bottom: 6rem !important;
+    }
+    
+    header.masthead .masthead-heading {
+        font-size: 2.5rem !important; /* 글씨가 너무 크면 모바일에서 깨지므로 조절 */
+        line-height: 2.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+}
