@@ -11395,36 +11395,60 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
 }
 
 
-/* 1. 기존 하단 텍스트 영역 완전히 제거 */
-.portfolio-caption {
-    display: none !important;
+/* 1. 그리드 가로 정렬 강제 유지 (3열 기준) */
+#portfolio .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
 }
 
-/* 2. /* 오버레이 스타일 수정: 아이콘과 제목이 수직 정렬되도록 */
-.portfolio-link .portfolio-hover .portfolio-hover-content {
+#portfolio .portfolio-item {
+    margin-bottom: 30px;
+    display: block !important;
+}
+
+/* 2. 오버레이 설정 (아이콘 + 제목 수직 정렬) */
+.portfolio-link {
+    position: relative;
+    display: block;
+}
+
+.portfolio-link .portfolio-hover {
     display: flex !important;
     flex-direction: column !important; /* 수직 정렬 */
     align-items: center;
     justify-content: center;
-    color: white !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7) !important; /* 검은색 반투명 */
+    opacity: 0 !important; /* 평소엔 숨김 */
+    transition: opacity 0.4s ease;
+    z-index: 2;
 }
 
-/* 플러스 아이콘 스타일 (크기 살짝 조절) */
-.portfolio-hover .portfolio-hover-content i {
-    font-size: 2.5rem !important; /* fa-3x 보다 조금 작게 */
-    margin-bottom: 10px !important; /* 제목과의 간격 */
-}
-
-/* 새로 추가한 제목 스타일 */
-.portfolio-hover .portfolio-hover-content .portfolio-hover-title {
-    font-size: 1rem !important; /* 아이콘보다 작게 */
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: center;
+/* 마우스 올렸을 때만 보이게 강제 적용 */
+.portfolio-link:hover .portfolio-hover {
     opacity: 1 !important;
 }
 
-/* 기존 하단 텍스트 숨기기 */
+/* 3. 아이콘 & 제목 스타일 */
+.portfolio-hover .portfolio-hover-content {
+    text-align: center;
+    color: white !important;
+}
+
+.portfolio-hover-title {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white !important;
+}
+
+/* 기존 하단 캡션 숨기기 */
 .portfolio-caption {
     display: none !important;
 }
