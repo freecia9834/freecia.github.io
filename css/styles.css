@@ -11466,10 +11466,24 @@ header.masthead .masthead-heading {
     color: #e6b400 !important;
 }
 
-/* --- 스크롤 시 내비게이션 바 블러 효과 제거 --- */
 
-/* 1. 스크롤되어 투명도가 생기는 내비게이션 바의 블러 효과 삭제 */
+/* 1. 스크롤 시 내비게이션 바 블러 효과 완전히 제거 */
 #mainNav.navbar-shrink {
-    backdrop-filter: none !important; /* 블러 효과 제거 */
-    -webkit-backdrop-filter: none !important; /* 사파리 브라우저용 */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(0, 0, 0, 0.9) !important; /* 블러 대신 배경을 90% 불투명하게 하여 가독성 확보 */
+}
+
+/* 2. 다크모드에서 우측 메뉴 글씨를 블랙으로 강제 (최상위 우선순위) */
+[data-bs-theme="dark"] #mainNav .nav-link,
+[data-bs-theme="dark"] #mainNav .nav-link.active {
+    color: #000000 !important;
+    --bs-nav-link-color: #000000 !important;
+    font-weight: 800 !important;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6) !important; /* 배경 그림 위에서의 시인성 */
+}
+
+/* 3. 로고(ArtFreecia)는 어떤 모드에서도 옐로우 고정 */
+#mainNav .navbar-brand {
+    color: #ffc800 !important;
 }
