@@ -11467,23 +11467,27 @@ header.masthead .masthead-heading {
 }
 
 
-/* 1. 스크롤 시 내비게이션 바 블러 효과 완전히 제거 */
-#mainNav.navbar-shrink {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background-color: rgba(0, 0, 0, 0.9) !important; /* 블러 대신 배경을 90% 불투명하게 하여 가독성 확보 */
-}
+/* --- [최종] 다크모드 내비게이션 메뉴 블랙 강제 --- */
 
-/* 2. 다크모드에서 우측 메뉴 글씨를 블랙으로 강제 (최상위 우선순위) */
-[data-bs-theme="dark"] #mainNav .nav-link,
-[data-bs-theme="dark"] #mainNav .nav-link.active {
-    color: #000000 !important;
+/* 1. 다크모드 속성이 붙은 모든 상황에서 변수값을 블랙으로 고정 */
+[data-bs-theme="dark"] #mainNav {
     --bs-nav-link-color: #000000 !important;
-    font-weight: 800 !important;
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6) !important; /* 배경 그림 위에서의 시인성 */
+    --bs-nav-link-hover-color: #ffc800 !important;
+    --bs-navbar-active-color: #000000 !important;
+    --bs-navbar-color: #000000 !important;
 }
 
-/* 3. 로고(ArtFreecia)는 어떤 모드에서도 옐로우 고정 */
+/* 2. 개별 링크 요소에 대한 강력한 직접 타격 */
+[data-bs-theme="dark"] #mainNav .nav-link,
+[data-bs-theme="dark"] #mainNav .nav-link.active,
+[data-bs-theme="dark"] #mainNav .navbar-nav .show > .nav-link {
+    color: #000000 !important;
+    font-weight: 800 !important;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 3. 로고(ArtFreecia)는 옐로우로 절대 고정 */
 #mainNav .navbar-brand {
     color: #ffc800 !important;
+    -webkit-text-fill-color: #ffc800 !important; /* 브라우저 엔진 레벨 강제 */
 }
