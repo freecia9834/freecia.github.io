@@ -11395,21 +11395,32 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
 }
 
 
-/* 1. 그리드 가로 정렬 강제 유지 (3열 기준) */
+/* 1. 그리드 시스템 강제 복구 */
 #portfolio .row {
     display: flex !important;
     flex-wrap: wrap !important;
+    justify-content: flex-start !important;
 }
 
+/* 한 줄에 3개씩(33.3%) 배치되도록 강제 설정 */
 #portfolio .portfolio-item {
-    margin-bottom: 30px;
-    display: block !important;
+    width: 33.33% !important; 
+    padding: 15px !important;
+    box-sizing: border-box !important;
 }
 
-/* 2. 오버레이 설정 (아이콘 + 제목 수직 정렬) */
+/* 모바일에서는 한 줄에 1개씩 보이도록 */
+@media (max-width: 768px) {
+    #portfolio .portfolio-item {
+        width: 100% !important;
+    }
+}
+
+/* 2. 오버레이 완성 (아이콘 + 제목) */
 .portfolio-link {
     position: relative;
     display: block;
+    width: 100%;
 }
 
 .portfolio-link .portfolio-hover {
@@ -11422,30 +11433,24 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7) !important; /* 검은색 반투명 */
-    opacity: 0 !important; /* 평소엔 숨김 */
-    transition: opacity 0.4s ease;
+    background: rgba(0, 0, 0, 0.75) !important; /* 배경색 */
+    opacity: 0 !important;
+    transition: opacity 0.3s ease;
     z-index: 2;
 }
 
-/* 마우스 올렸을 때만 보이게 강제 적용 */
 .portfolio-link:hover .portfolio-hover {
     opacity: 1 !important;
 }
 
-/* 3. 아이콘 & 제목 스타일 */
-.portfolio-hover .portfolio-hover-content {
-    text-align: center;
-    color: white !important;
-}
-
 .portfolio-hover-title {
-    display: block;
-    margin-top: 10px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    display: block !important;
     color: white !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin-top: 15px !important;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 /* 기존 하단 캡션 숨기기 */
