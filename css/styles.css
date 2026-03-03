@@ -11415,3 +11415,33 @@ header.masthead .masthead-heading {
     border-color: #ffc800 !important;
     color: #ffffff !important;
 }
+
+/* --- 프리시아 작가님 전용: 내비게이션 정밀 제어 --- */
+
+/* 1. 로고(ArtFreecia)는 언제나 노란색 고정 */
+#mainNav .navbar-brand {
+    color: #ffc800 !important;
+    font-weight: 800 !important;
+}
+
+/* 2. 스크롤 전 (상단에 있을 때): 메뉴 글씨 블랙 */
+#mainNav .nav-link {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    transition: color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 3. 스크롤 전 마우스 호버: 노란색으로 변경 */
+#mainNav .nav-link:hover {
+    color: #ffc800 !important;
+}
+
+/* 4. 스크롤 후 (내비게이션 바가 검게 변했을 때): 메뉴 글씨 화이트 */
+#mainNav.navbar-shrink .nav-link {
+    color: #ffffff !important;
+}
+
+/* 5. 스크롤 후 마우스 호버: 다시 노란색으로 변경 */
+#mainNav.navbar-shrink .nav-link:hover {
+    color: #ffc800 !important;
+}
