@@ -11328,59 +11328,39 @@ section#contact form#contactForm :-ms-input-placeholder {
     text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3) !important;
 }
 
-/* 2. 네비게이션 메뉴: 스크롤 전 (블랙) */
-#mainNav .nav-link {
-    color: #000000 !important;
-    font-weight: 800 !important;
-    transition: color 0.2s ease-in-out !important;
-}
+/* ============================================================
+   [진짜 최종] 프리시아 작가님 통합 관리 코드
+   ============================================================ */
 
-/* 3. 네비게이션 메뉴: 스크롤 후 (화이트) */
-#mainNav.navbar-shrink .nav-link {
-    color: #ffffff !important;
-}
-
-/* 4. 네비게이션 메뉴: 마우스 호버 (언제나 옐로우) */
-#mainNav .nav-link:hover,
-#mainNav.navbar-shrink .nav-link:hover {
-    color: #ffc800 !important;
-}
-
-/* 5. 메인 중앙 텍스트 (블랙 강제 고정) */
-header.masthead .masthead-subheading,
-header.masthead .masthead-heading {
-    color: #000000 !important;
-}
-
-/* 6. 모달창 가독성 최적화 (X버튼 화이트 + 배경 딥블랙) */
-[data-bs-theme="dark"] .portfolio-modal .btn-close {
-    filter: invert(1) grayscale(100%) brightness(200%) !important;
-    opacity: 1 !important;
-}
-.portfolio-modal .modal-content {
-    background-color: #1a1a1a !important;
-    color: #ffffff !important;
-}
-
-/* 7. 시스템 다크모드 간섭 차단 */
-[data-bs-theme="dark"] #mainNav .nav-link {
-    color: inherit; 
-}
-
-/* [최종] 배경 이미지 삽입 및 텍스트 선명화 통합 */
+/* 1. 배경 이미지 (이미지 경로 주의: index.html 기준) */
 header.masthead {
-    /* 1. 작가님이 원하시는 이미지를 여기서 완벽하게 제어합니다 */
-    background-image: url("../assets/img/header-bg.jpg") !important;
+    background-image: url("assets/img/header-bg.jpg") !important;
     background-repeat: no-repeat !important;
-    background-attachment: scroll !important;
     background-position: center center !important;
     background-size: cover !important;
 }
 
-/* 2. 중앙 메인 텍스트: 블랙 고정 및 블러(그림자) 완전 제거 */
+/* 2. 중앙 메인 텍스트: 블랙 고정 & 블러(그림자) 완전 제거 */
 header.masthead .masthead-subheading,
 header.masthead .masthead-heading {
     color: #000000 !important;
-    text-shadow: none !important; /* 여기서 블러가 확실히 사라집니다 */
+    text-shadow: none !important;
     filter: none !important;
+}
+
+/* 3. 우측 상단 메뉴: 기본 블랙 & 가독성 확보 */
+#mainNav .nav-link {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-weight: 800 !important;
+}
+
+/* 4. 메뉴 호버(마우스 올렸을 때): 브랜드 컬러 옐로우 */
+#mainNav .nav-link:hover {
+    color: #ffc800 !important;
+}
+
+/* 5. 스크롤 시: 메뉴를 화이트로 전환 (필요 없다면 이 블록만 삭제) */
+#mainNav.navbar-shrink .nav-link {
+    color: #ffffff !important;
 }
