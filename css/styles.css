@@ -11445,3 +11445,23 @@ header.masthead .masthead-heading {
 #mainNav.navbar-shrink .nav-link:hover {
     color: #ffc800 !important;
 }
+
+
+/* --- 프리시아 브랜드 로고 색상 강제 고정 --- */
+
+/* 1. 평상시 로고 색상: 옐로우 */
+#mainNav .navbar-brand {
+    color: #ffc800 !important;
+    font-weight: 800 !important;
+}
+
+/* 2. 스크롤 후(navbar-shrink) 로고 색상: 옐로우 유지 */
+#mainNav.navbar-shrink .navbar-brand {
+    color: #ffc800 !important;
+}
+
+/* 3. 로고에 마우스 올렸을 때(Hover): 약간 더 진한 옐로우로 반응 */
+#mainNav .navbar-brand:hover,
+#mainNav.navbar-shrink .navbar-brand:hover {
+    color: #e6b400 !important;
+}
