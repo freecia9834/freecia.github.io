@@ -11317,42 +11317,43 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 
 /* ============================================================
-   프리시아 작가님 브랜딩 & 인터랙션 통합 솔루션 (FINAL VER.)
+   [최종] 프리시아 작가님 브랜드 가독성 & 인터랙션 통합 코드 
    ============================================================ */
 
-/* [1] 메인 화면 중앙 텍스트 (블랙 고정) */
+/* 1. 상단 로고 (ArtFreecia): 어떤 상황에서도 옐로우 고정 */
+#mainNav .navbar-brand, 
+#mainNav.navbar-shrink .navbar-brand {
+    color: #ffc800 !important;
+    font-weight: 800 !important;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 2. 네비게이션 메뉴: 스크롤 전 (블랙) */
+#mainNav .nav-link {
+    color: #000000 !important;
+    font-weight: 800 !important;
+    transition: color 0.2s ease-in-out !important;
+}
+
+/* 3. 네비게이션 메뉴: 스크롤 후 (화이트) */
+#mainNav.navbar-shrink .nav-link {
+    color: #ffffff !important;
+}
+
+/* 4. 네비게이션 메뉴: 마우스 호버 (언제나 옐로우) */
+#mainNav .nav-link:hover,
+#mainNav.navbar-shrink .nav-link:hover {
+    color: #ffc800 !important;
+}
+
+/* 5. 메인 중앙 텍스트 (블랙 강제 고정) */
 header.masthead .masthead-subheading,
 header.masthead .masthead-heading {
     color: #000000 !important;
     text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5) !important;
 }
 
-/* [2] 상단 네비게이션: 기본 상태 (블랙 + 호버 옐로우) */
-#mainNav .nav-link {
-    color: #000000 !important;
-    font-weight: 800 !important;
-    transition: color 0.2s ease-in-out !important;
-}
-#mainNav .nav-link:hover {
-    color: #ffc800 !important;
-}
-
-/* [3] 상단 네비게이션: 스크롤 시 (화이트 + 호버 옐로우) */
-#mainNav.navbar-shrink .nav-link {
-    color: #ffffff !important;
-}
-#mainNav.navbar-shrink .nav-link:hover {
-    color: #ffc800 !important;
-}
-
-/* [4] 로고: 어떤 상황에서도 옐로우 고정 */
-#mainNav .navbar-brand, 
-#mainNav.navbar-shrink .navbar-brand {
-    color: #ffc800 !important;
-    font-weight: 800 !important;
-}
-
-/* [5] 모달창 가독성: X버튼 화이트 + 배경 딥블랙 */
+/* 6. 모달창 가독성 최적화 (X버튼 화이트 + 배경 딥블랙) */
 [data-bs-theme="dark"] .portfolio-modal .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%) !important;
     opacity: 1 !important;
@@ -11362,7 +11363,7 @@ header.masthead .masthead-heading {
     color: #ffffff !important;
 }
 
-/* [6] 다크모드 강제 오버라이드 (시스템 간섭 차단) */
+/* 7. 시스템 다크모드 간섭 차단 */
 [data-bs-theme="dark"] #mainNav .nav-link {
-    color: inherit; /* 위에서 설정한 로직을 따르도록 상속 */
+    color: inherit; 
 }
