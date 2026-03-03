@@ -11366,3 +11366,21 @@ header.masthead .masthead-heading {
 [data-bs-theme="dark"] #mainNav .nav-link {
     color: inherit; 
 }
+
+/* [최종] 배경 이미지 삽입 및 텍스트 선명화 통합 */
+header.masthead {
+    /* 1. 작가님이 원하시는 이미지를 여기서 완벽하게 제어합니다 */
+    background-image: url("../assets/img/header-bg.jpg") !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important;
+}
+
+/* 2. 중앙 메인 텍스트: 블랙 고정 및 블러(그림자) 완전 제거 */
+header.masthead .masthead-subheading,
+header.masthead .masthead-heading {
+    color: #000000 !important;
+    text-shadow: none !important; /* 여기서 블러가 확실히 사라집니다 */
+    filter: none !important;
+}
