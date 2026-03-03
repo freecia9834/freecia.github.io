@@ -11352,3 +11352,26 @@ header.masthead .masthead-heading {
 #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
     color: #ffc107 !important;
 }
+
+/* 다크모드에서도 헤더의 가독성을 강제로 유지 */
+[data-bs-theme="dark"] .masthead {
+    color: #212529 !important; /* 메인 텍스트 컬러를 어두운 회색/검정으로 고정 */
+}
+
+[data-bs-theme="dark"] .masthead .masthead-subheading,
+[data-bs-theme="dark"] .masthead .masthead-heading,
+[data-bs-theme="dark"] .navbar-brand,
+[data-bs-theme="dark"] .nav-link {
+    color: #212529 !important; /* 메뉴 글씨와 제목을 검은색으로 강제 */
+}
+
+[data-bs-theme="dark"] .masthead .btn-primary {
+    background-color: #ffc800 !important; /* 버튼 배경색을 원래의 노란색으로 고정 */
+    border-color: #ffc800 !important;
+    color: #ffffff !important; /* 버튼 안의 글씨는 흰색 유지 */
+}
+
+/* 네비게이션 바가 투명할 때 다크모드 글씨 색상 제어 */
+[data-bs-theme="dark"] #mainNav .nav-link {
+    color: #212529 !important;
+}
