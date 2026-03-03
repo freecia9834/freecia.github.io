@@ -674,12 +674,30 @@ function copyEmailToClipboard() {
 </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+    <script src="js/scripts.js"></script>
+
+    <script>
+        // 다음 모달로 바로 넘어가는 기능
+        document.querySelectorAll('.next-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                const nextModalId = this.getAttribute('data-next');
+                const currentModalElement = this.closest('.modal');
+                const currentModal = bootstrap.Modal.getInstance(currentModalElement);
+                
+                if (currentModal) {
+                    currentModal.hide(); // 현재창 닫기
+                    
+                    // 닫히는 애니메이션(약 0.4초) 후 다음 창 열기
+                    setTimeout(() => {
+                        const nextModalElement = document.querySelector(nextModalId);
+                        if (nextModalElement) {
+                            const nextModal = new bootstrap.Modal(nextModalElement);
+                            nextModal.show();
+                        }
+                    }, 400); 
+                }
+            });
+        });
+    </script>
+</body>
 </html>
