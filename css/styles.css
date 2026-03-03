@@ -11340,23 +11340,23 @@ header.masthead {
     background-size: cover !important;
 }
 
-/* 2. 중앙 메인 텍스트: 블랙 고정 & 블러(그림자) 완전 제거 */
-header.masthead .masthead-subheading,
-header.masthead .masthead-heading {
+/* 2. 중앙 메인 텍스트: 블랙 & 블러 완전 제거 */
+header.masthead .container .masthead-subheading,
+header.masthead .container .masthead-heading {
     color: #000000 !important;
     text-shadow: none !important;
     filter: none !important;
 }
 
-/* 3. 우측 상단 메뉴: 기본 블랙 & 가독성 확보 */
-#mainNav .nav-link {
+/* 3. 우측 상단 메뉴: 블랙 강제 고정 */
+#mainNav .navbar-nav .nav-item .nav-link {
     color: #000000 !important;
     opacity: 1 !important;
     font-weight: 800 !important;
 }
 
-/* 4. 메뉴 호버(마우스 올렸을 때): 브랜드 컬러 옐로우 */
-#mainNav .nav-link:hover {
+/* 4. 메뉴 호버: 옐로우 */
+#mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #ffc800 !important;
 }
 
