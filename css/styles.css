@@ -11340,27 +11340,35 @@ header.masthead {
     background-size: cover !important;
 }
 
-/* 2. 중앙 메인 텍스트: 블랙 & 블러 완전 제거 */
-header.masthead .container .masthead-subheading,
-header.masthead .container .masthead-heading {
+/* 2.중앙 메인 텍스트: 블랙 & 블러 완전 제거 (다크모드 포함) */
+header.masthead .masthead-subheading,
+header.masthead .masthead-heading,
+[data-bs-theme="dark"] header.masthead .masthead-subheading,
+[data-bs-theme="dark"] header.masthead .masthead-heading {
     color: #000000 !important;
     text-shadow: none !important;
     filter: none !important;
 }
 
-/* 3. 우측 상단 메뉴: 블랙 강제 고정 */
-#mainNav .navbar-nav .nav-item .nav-link {
+/* 3. 우측 상단 메뉴: 기본 상태 & 다크모드 공통: 메뉴 블랙 고정 */
+#mainNav .nav-link,
+[data-bs-theme="dark"] #mainNav .nav-link {
     color: #000000 !important;
     opacity: 1 !important;
     font-weight: 800 !important;
 }
 
 /* 4. 메뉴 호버: 옐로우 */
-#mainNav .navbar-nav .nav-item .nav-link:hover {
+#mainNav .nav-link:hover,
+#mainNav.navbar-shrink .nav-link:hover,
+[data-bs-theme="dark"] #mainNav .nav-link:hover {
     color: #ffc800 !important;
 }
 
-/* 5. 스크롤 시: 메뉴를 화이트로 전환 (필요 없다면 이 블록만 삭제) */
-#mainNav.navbar-shrink .nav-link {
-    color: #ffffff !important;
+/* 5. 크롤 내렸을 때 (navbar-shrink): 화이트로 변경 */
+/* 배경이 흰색으로 변하는 테마 특성상, 글자는 화이트가 아니라 다시 블랙이나 다른색이어야 보이지만, 
+   작가님이 원하시는 '화이트' 설정을 강제합니다. */
+#mainNav.navbar-shrink .nav-link,
+[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link {
+    color: #ffffff !important; 
 }
