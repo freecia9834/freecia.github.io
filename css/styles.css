@@ -11346,6 +11346,13 @@ header.masthead {
     --bs-body-bg: #ffffff !important;
 }
 
+/* 다크모드 메뉴 글씨 강제 블랙 (스크롤 전) */
+html[data-bs-theme="dark"] #mainNav .nav-link,
+#mainNav .nav-link {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
 /* 2. 중앙 메인 텍스트: 다크모드 조건부 선택자를 사용하여 블랙 강제 고정 */
 html[data-bs-theme="dark"] header.masthead .masthead-subheading,
 html[data-bs-theme="dark"] header.masthead .masthead-heading,
@@ -11356,19 +11363,12 @@ header.masthead .masthead-heading {
     filter: none !important;
 }
 
-/* 3. 우측 상단 메뉴: 다크모드에서도 블랙, 스크롤 시 화이트 */
-html[data-bs-theme="dark"] #mainNav .nav-link,
-#mainNav .nav-link {
-    color: #000000 !important;
-    opacity: 1 !important;
-    font-weight: 800 !important;
-}
-
-* 스크롤 시 화이트 전환 */
+/* 3. 우측 상단 메뉴: 라이트/다크모드 공통: 스크롤 내렸을 때(화이트로 변해야 함) */
 html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
 #mainNav.navbar-shrink .nav-link {
     color: #ffffff !important;
 }
+
 
 /* 4. 호버: 무조건 옐로우 */
 #mainNav .nav-link:hover,
