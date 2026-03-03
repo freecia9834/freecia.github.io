@@ -11494,31 +11494,34 @@ header.masthead .masthead-heading {
 
 
 
-/* --- 메뉴 호버(옐로우) 및 스크롤(화이트) 최종 복구 --- */
+/* --- 프리시아 작가님 웹사이트 최종 가독성 & 인터랙션 통합 코드 --- */
 
-/* 1. 상단에 있을 때: 메뉴 블랙 유지 + 호버 시 옐로우 */
+/* 1. 평상시 (상단): 글씨 블랙 + 호버 시 옐로우 */
 #mainNav .nav-link {
     color: #000000 !important;
-    transition: color 0.2s ease-in-out;
+    font-weight: 800 !important;
+    transition: color 0.2s ease-in-out !important;
 }
 #mainNav .nav-link:hover {
-    color: #ffc800 !important; /* 호버 시 옐로우 강제 */
+    color: #ffc800 !important; /* 호버 시 옐로우 */
 }
 
-/* 2. 스크롤 내렸을 때: 메뉴 화이트 전환 + 호버 시 옐로우 */
+/* 2. 스크롤 시 (navbar-shrink): 글씨 화이트 + 호버 시 옐로우 */
 #mainNav.navbar-shrink .nav-link {
     color: #ffffff !important;
 }
 #mainNav.navbar-shrink .nav-link:hover {
-    color: #ffc800 !important; /* 스크롤 상태에서도 호버 시 옐로우 */
-}
-
-/* 3. 로고(ArtFreecia)는 어떤 상황에서도 옐로우 고정 */
-#mainNav .navbar-brand {
     color: #ffc800 !important;
 }
 
-/* 4. 모달 닫기 버튼(X) 화이트 고정 */
+/* 3. 로고 (ArtFreecia): 어떤 상황에서도 옐로우 고정 */
+#mainNav .navbar-brand {
+    color: #ffc800 !important;
+    font-weight: 800 !important;
+}
+
+/* 4. 모달 닫기 버튼 (X): 다크모드에서 화이트로 반전 */
 [data-bs-theme="dark"] .portfolio-modal .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%) !important;
+    opacity: 1 !important;
 }
