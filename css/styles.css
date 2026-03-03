@@ -11457,3 +11457,44 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
 .portfolio-caption {
     display: none !important;
 }
+
+/* --- 여기서부터 프리시아 작가님 커스텀 오버레이 스타일 --- */
+.portfolio-hover-content {
+    display: flex !important;
+    flex-direction: column !important; /* 수직 정렬 강제 */
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-hover-title {
+    margin-top: 15px; /* 아이콘과의 간격 */
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+/* 기존 하단 캡션 영역 숨기기 */
+.portfolio-caption {
+    display: none !important;
+}
+/* --- 커스텀 스타일 끝 --- */
+
+/* 썸네일 이미지 크기를 그리드 너비에 꽉 차게 복구 */
+#portfolio .portfolio-item img {
+    width: 100% !important;   /* 가로 너비를 칸에 맞게 꽉 채움 */
+    height: auto !important;  /* 비율 유지 */
+    display: block !important;
+}
+
+/* 그리드 간격 미세 조정 (이미지가 너무 붙어 보인다면) */
+#portfolio .portfolio-item {
+    padding: 10px !important; /* 이미지 사이의 여백 확보 */
+}
+
+/* 오버레이가 이미지 크기와 정확히 일치하도록 고정 */
+.portfolio-link .portfolio-hover {
+    width: 100% !important;
+    height: 100% !important;
+}
+
