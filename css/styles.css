@@ -11458,41 +11458,27 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
     display: none !important;
 }
 
-/* --- 여기서부터 프리시아 작가님 커스텀 오버레이 스타일 --- */
-.portfolio-hover-content {
-    display: flex !important;
-    flex-direction: column !important; /* 수직 정렬 강제 */
-    align-items: center;
-    justify-content: center;
+/* 1. 그리드 칸 자체의 너비를 부모에 맞춤 */
+#portfolio .portfolio-item {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
 }
 
-.portfolio-hover-title {
-    margin-top: 15px; /* 아이콘과의 간격 */
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: white !important;
-    text-transform: uppercase;
-}
-
-/* 기존 하단 캡션 영역 숨기기 */
-.portfolio-caption {
-    display: none !important;
-}
-/* --- 커스텀 스타일 끝 --- */
-
-/* 썸네일 이미지 크기를 그리드 너비에 꽉 차게 복구 */
+/* 2. 이미지를 칸 너비에 100% 꽉 채움 (핵심) */
 #portfolio .portfolio-item img {
-    width: 100% !important;   /* 가로 너비를 칸에 맞게 꽉 채움 */
-    height: auto !important;  /* 비율 유지 */
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important; /* 비율 유지하며 꽉 채움 */
+}
+
+/* 3. 링크와 오버레이 영역도 이미지와 동일하게 확장 */
+.portfolio-link {
+    width: 100% !important;
     display: block !important;
 }
 
-/* 그리드 간격 미세 조정 (이미지가 너무 붙어 보인다면) */
-#portfolio .portfolio-item {
-    padding: 10px !important; /* 이미지 사이의 여백 확보 */
-}
-
-/* 오버레이가 이미지 크기와 정확히 일치하도록 고정 */
 .portfolio-link .portfolio-hover {
     width: 100% !important;
     height: 100% !important;
