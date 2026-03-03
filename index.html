@@ -14,27 +14,33 @@
 
         <style>
             header.masthead {
-                height: 50vh !important;    /* 화면 높이의 80%로 축소 */
-                min-height: 600px;         /* 모바일 등에서 너무 작아지지 않게 방지 */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;   /* 텍스트 중앙 정렬 */
-                padding-top: 0 !important; /* 기존 패딩 제거로 비율 최적화 */
+                /* 1. 높이 설정: 50vh로 테스트해보시고, 너무 작으면 60~70으로 조절하세요 */
+                height: 50vh !important; 
+                min-height: 0 !important;   /* 최소 높이 제한 해제 */
+                
+                /* 2. 내부 여백(패딩) 강제 제거: 이게 핵심입니다! */
+                padding-top: 0 !important;
                 padding-bottom: 0 !important;
+                
+                /* 3. 내용 정렬 */
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 position: relative;
             }
 
-            /* 이미지 오버레이: 그림을 15% 정도 살짝 어둡게 하여 텍스트 강조 (원치 않으시면 아래 블록을 삭제하세요) */
+            /* 이미지 오버레이 (그림을 살짝 차분하게) */
             header.masthead::before {
                 content: "";
                 position: absolute;
                 top: 0; left: 0; width: 100%; height: 100%;
-                background-color: rgba(0, 0, 0, 0.05); 
+                background-color: rgba(0, 0, 0, 0.05);
                 z-index: 0;
             }
             header.masthead .container {
                 position: relative;
-                z-index: 1; /* 텍스트가 그림보다 위에 오도록 */
+                z-index: 1;
             }
         </style>
     </head>
