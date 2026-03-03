@@ -6,15 +6,37 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Freecia | Author & Illustrator</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            header.masthead {
+                height: 80vh !important;    /* 화면 높이의 80%로 축소 */
+                min-height: 600px;         /* 모바일 등에서 너무 작아지지 않게 방지 */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;   /* 텍스트 중앙 정렬 */
+                padding-top: 0 !important; /* 기존 패딩 제거로 비율 최적화 */
+                padding-bottom: 0 !important;
+                position: relative;
+            }
+
+            /* 이미지 오버레이: 그림을 15% 정도 살짝 어둡게 하여 텍스트 강조 (원치 않으시면 아래 블록을 삭제하세요) */
+            header.masthead::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background-color: rgba(0, 0, 0, 0.15); 
+                z-index: 0;
+            }
+            header.masthead .container {
+                position: relative;
+                z-index: 1; /* 텍스트가 그림보다 위에 오도록 */
+            }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
