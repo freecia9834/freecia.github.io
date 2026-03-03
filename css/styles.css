@@ -10943,15 +10943,15 @@ p {
   }
 }
 header.masthead {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
-  text-align: center;
-  color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  background-size: cover;
+    min-height: 1200px !important; /* 최소 높이를 1200px로 고정 */
+    height: auto !important;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    background-image: url('../assets/img/header-bg.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important; /* 그림이 섹션을 꽉 채우도록 설정 */
 }
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
