@@ -11491,3 +11491,12 @@ header.masthead .masthead-heading {
     color: #ffc800 !important;
     -webkit-text-fill-color: #ffc800 !important; /* 브라우저 엔진 레벨 강제 */
 }
+
+
+/* --- 모달 팝업 가독성 강화 섹션 --- */
+
+/* 1. 다크모드에서 모달 닫기 버튼(X)을 화이트로 변경 */
+[data-bs-theme="dark"] .portfolio-modal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%) !important; /* 블랙 아이콘을 화이트로 반전 */
+    opacity: 1 !important;
+}
