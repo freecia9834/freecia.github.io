@@ -11465,3 +11465,11 @@ header.masthead .masthead-heading {
 #mainNav.navbar-shrink .navbar-brand:hover {
     color: #e6b400 !important;
 }
+
+/* --- 스크롤 시 내비게이션 바 블러 효과 제거 --- */
+
+/* 1. 스크롤되어 투명도가 생기는 내비게이션 바의 블러 효과 삭제 */
+#mainNav.navbar-shrink {
+    backdrop-filter: none !important; /* 블러 효과 제거 */
+    -webkit-backdrop-filter: none !important; /* 사파리 브라우저용 */
+}
