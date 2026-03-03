@@ -11384,27 +11384,34 @@ header.masthead .masthead-heading {
 }
 
 
-/* --- 다크모드 가독성 강제 집행 섹션 (styles.css 맨 하단에 추가) --- */
+/* --- [최종] 다크모드 가독성 강제 적용 --- */
 
-/* 1. 메뉴와 로고 블랙 고정 */
-body[data-bs-theme="dark"] #mainNav .navbar-brand,
-body[data-bs-theme="dark"] #mainNav .nav-link {
+/* 1. 상단 메뉴와 로고 글씨를 블랙으로 고정 */
+[data-bs-theme="dark"] #mainNav .navbar-brand, 
+[data-bs-theme="dark"] #mainNav .nav-link,
+[data-bs-theme="dark"] #mainNav .nav-link.active {
     color: #000000 !important;
+    --bs-nav-link-color: #000000 !important; /* 부트스트랩 변수까지 강제 수정 */
+    --bs-navbar-brand-color: #000000 !important;
     font-weight: 800 !important;
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6) !important;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7) !important;
 }
 
 /* 2. 중앙 메인 타이틀 블랙 고정 */
-body[data-bs-theme="dark"] .masthead .masthead-subheading,
-body[data-bs-theme="dark"] .masthead .masthead-heading {
+[data-bs-theme="dark"] .masthead .masthead-subheading,
+[data-bs-theme="dark"] .masthead .masthead-heading {
     color: #000000 !important;
-    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.5) !important;
+    --bs-body-color: #000000 !important;
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6) !important;
 }
 
-/* 3. VIEW WORKS 버튼 노란색 유지 */
-body[data-bs-theme="dark"] .masthead .btn-primary {
+/* 3. 노란색 버튼(#ffc800) 보존 */
+[data-bs-theme="dark"] .btn-primary {
+    --bs-btn-bg: #ffc800 !important;
+    --bs-btn-border-color: #ffc800 !important;
+    --bs-btn-hover-bg: #e6b400 !important;
+    --bs-btn-hover-border-color: #e6b400 !important;
     background-color: #ffc800 !important;
     border-color: #ffc800 !important;
     color: #ffffff !important;
-    opacity: 1 !important;
 }
