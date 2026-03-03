@@ -11495,7 +11495,7 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
     display: block;
 }
 
-/* 2. 세로 그림 전용: HTML에서 class="v-img"를 추가한 이미지방 900px로 제한 */
+/* 2. 세로 그림 전용: HTML에서 class="v-img"를 추가한 이미지방 700px로 제한 */
 .portfolio-modal .modal-body img.v-img {
-    max-width: 900px !important;
+    max-width: 700px !important;
 }
