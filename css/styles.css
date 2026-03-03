@@ -11315,198 +11315,29 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* 1. 메인 중앙 텍스트 색상 변경 */
-header.masthead .masthead-subheading {
-    color: #000000 !important; /* Illustrator & Author 부분 */
-    font-weight: 700;
-}
 
+/* ============================================================
+   프리시아 작가님 브랜딩 & 인터랙션 통합 솔루션 (FINAL VER.)
+   ============================================================ */
+
+/* [1] 메인 화면 중앙 텍스트 (블랙 고정) */
+header.masthead .masthead-subheading,
 header.masthead .masthead-heading {
-    color: #000000 !important; /* THE WORLD OF FREECIA 부분 */
-    text-transform: uppercase;
-}
-
-/* 2. 상단 네비게이션 메뉴 색상 변경 */
-#mainNav .navbar-nav .nav-item .nav-link {
     color: #000000 !important;
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5) !important;
 }
 
-
-/* 마우스 올렸을 때(Hover) 노란색 유지 또는 강조 */
-#mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #ffc107 !important;
-}
-
-/* 1. 기본 상태 (상단에 있을 때): 블랙 */
-#mainNav .navbar-nav .nav-item .nav-link {
-    color: #000000 !important;
-    transition: color 0.3s ease-in-out;
-}
-
-/* 2. 스크롤 내려갔을 때 (navbar-shrink 활성): 흰색으로 변경 */
-#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-    color: #ffffff !important;
-}
-
-/* 4. 마우스 호버 시 포인트 컬러(노란색) 유지 */
-#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-    color: #ffc107 !important;
-}
-
-/* 1. 다크모드에서도 상단 메뉴와 로고를 블랙으로 강제 고정 */
-[data-bs-theme="dark"] #mainNav .navbar-brand,
-[data-bs-theme="dark"] #mainNav .nav-link {
-    color: #000000 !important;
-    font-weight: 800 !important;
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6) !important;
-}
-
-/* 2. 다크모드에서도 메인 타이틀을 블랙으로 강제 고정 */
-[data-bs-theme="dark"] .masthead .masthead-subheading,
-[data-bs-theme="dark"] .masthead .masthead-heading {
-    color: #000000 !important;
-    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.5) !important;
-}
-
-/* 3. ★핵심★ 다크모드에서도 VIEW WORKS 버튼의 노란색을 강제로 유지 */
-[data-bs-theme="dark"] .masthead .btn-primary {
-    background-color: #ffc800 !important; /* 작가님의 시그니처 옐로우 */
-    border-color: #ffc800 !important;
-    color: #ffffff !important; /* 버튼 안의 글씨는 흰색 유지 */
-    opacity: 1 !important; /* 다크모드 특유의 흐릿해짐 방지 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important; /* 버튼 입체감 유지 */
-}
-
-/* 마우스 호버 시에도 노란색 계열 유지 */
-[data-bs-theme="dark"] .masthead .btn-primary:hover {
-    background-color: #e6b400 !important;
-    border-color: #e6b400 !important;
-}
-
-
-/* --- [최종] 다크모드 가독성 강제 적용 --- */
-
-/* 1. 상단 메뉴와 로고 글씨를 블랙으로 고정 */
-[data-bs-theme="dark"] #mainNav .navbar-brand, 
-[data-bs-theme="dark"] #mainNav .nav-link,
-[data-bs-theme="dark"] #mainNav .nav-link.active {
-    color: #000000 !important;
-    --bs-nav-link-color: #000000 !important; /* 부트스트랩 변수까지 강제 수정 */
-    --bs-navbar-brand-color: #000000 !important;
-    font-weight: 800 !important;
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7) !important;
-}
-
-/* 2. 중앙 메인 타이틀 블랙 고정 */
-[data-bs-theme="dark"] .masthead .masthead-subheading,
-[data-bs-theme="dark"] .masthead .masthead-heading {
-    color: #000000 !important;
-    --bs-body-color: #000000 !important;
-    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6) !important;
-}
-
-/* 3. 노란색 버튼(#ffc800) 보존 */
-[data-bs-theme="dark"] .btn-primary {
-    --bs-btn-bg: #ffc800 !important;
-    --bs-btn-border-color: #ffc800 !important;
-    --bs-btn-hover-bg: #e6b400 !important;
-    --bs-btn-hover-border-color: #e6b400 !important;
-    background-color: #ffc800 !important;
-    border-color: #ffc800 !important;
-    color: #ffffff !important;
-}
-
-/* --- 프리시아 작가님 전용: 내비게이션 최종 제어 --- */
-
-/* 1. 로고(ArtFreecia)는 언제나 노란색 고정 */
-#mainNav .navbar-brand {
-    color: #ffc800 !important;
-    font-weight: 800 !important;
-}
-
-/* 2. [스크롤 전] 상단에 있을 때: 메뉴 글씨 블랙 */
-#mainNav .nav-link {
-    color: #000000 !important;
-    font-weight: 700 !important;
-    transition: color 0.3s ease;
-}
-
-/* 3. [스크롤 전] 마우스 올렸을 때(Hover): 노란색으로 변경 */
-#mainNav .nav-link:hover {
-    color: #ffc800 !important;
-}
-
-/* 4. [스크롤 후] 바가 검게 변했을 때: 메뉴 글씨 화이트로 자동 전환 */
-#mainNav.navbar-shrink .nav-link {
-    color: #ffffff !important;
-}
-
-/* 5. [스크롤 후] 마우스 올렸을 때(Hover): 노란색 유지 */
-#mainNav.navbar-shrink .nav-link:hover {
-    color: #ffc800 !important;
-}
-
-
-/* --- 프리시아 브랜드 로고 색상 강제 고정 --- */
-
-/* 1. 평상시 로고 색상: 옐로우 */
-#mainNav .navbar-brand {
-    color: #ffc800 !important;
-    font-weight: 800 !important;
-}
-
-/* 2. 스크롤 후(navbar-shrink) 로고 색상: 옐로우 유지 */
-#mainNav.navbar-shrink .navbar-brand {
-    color: #ffc800 !important;
-}
-
-/* 3. 로고에 마우스 올렸을 때(Hover): 약간 더 진한 옐로우로 반응 */
-#mainNav .navbar-brand:hover,
-#mainNav.navbar-shrink .navbar-brand:hover {
-    color: #e6b400 !important;
-}
-
-
-/* --- [최종] 다크모드 내비게이션 메뉴 블랙 강제 --- */
-
-/* 1. 다크모드 속성이 붙은 모든 상황에서 변수값을 블랙으로 고정 */
-[data-bs-theme="dark"] #mainNav {
-    --bs-nav-link-color: #000000 !important;
-    --bs-nav-link-hover-color: #ffc800 !important;
-    --bs-navbar-active-color: #000000 !important;
-    --bs-navbar-color: #000000 !important;
-}
-
-/* 2. 개별 링크 요소에 대한 강력한 직접 타격 */
-[data-bs-theme="dark"] #mainNav .nav-link,
-[data-bs-theme="dark"] #mainNav .nav-link.active,
-[data-bs-theme="dark"] #mainNav .navbar-nav .show > .nav-link {
-    color: #000000 !important;
-    font-weight: 800 !important;
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5) !important;
-}
-
-/* 3. 로고(ArtFreecia)는 옐로우로 절대 고정 */
-#mainNav .navbar-brand {
-    color: #ffc800 !important;
-    -webkit-text-fill-color: #ffc800 !important; /* 브라우저 엔진 레벨 강제 */
-}
-
-
-
-/* --- 프리시아 작가님 웹사이트 최종 가독성 & 인터랙션 통합 코드 --- */
-
-/* 1. 평상시 (상단): 글씨 블랙 + 호버 시 옐로우 */
+/* [2] 상단 네비게이션: 기본 상태 (블랙 + 호버 옐로우) */
 #mainNav .nav-link {
     color: #000000 !important;
     font-weight: 800 !important;
     transition: color 0.2s ease-in-out !important;
 }
 #mainNav .nav-link:hover {
-    color: #ffc800 !important; /* 호버 시 옐로우 */
+    color: #ffc800 !important;
 }
 
-/* 2. 스크롤 시 (navbar-shrink): 글씨 화이트 + 호버 시 옐로우 */
+/* [3] 상단 네비게이션: 스크롤 시 (화이트 + 호버 옐로우) */
 #mainNav.navbar-shrink .nav-link {
     color: #ffffff !important;
 }
@@ -11514,14 +11345,24 @@ header.masthead .masthead-heading {
     color: #ffc800 !important;
 }
 
-/* 3. 로고 (ArtFreecia): 어떤 상황에서도 옐로우 고정 */
-#mainNav .navbar-brand {
+/* [4] 로고: 어떤 상황에서도 옐로우 고정 */
+#mainNav .navbar-brand, 
+#mainNav.navbar-shrink .navbar-brand {
     color: #ffc800 !important;
     font-weight: 800 !important;
 }
 
-/* 4. 모달 닫기 버튼 (X): 다크모드에서 화이트로 반전 */
+/* [5] 모달창 가독성: X버튼 화이트 + 배경 딥블랙 */
 [data-bs-theme="dark"] .portfolio-modal .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%) !important;
     opacity: 1 !important;
+}
+.portfolio-modal .modal-content {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+/* [6] 다크모드 강제 오버라이드 (시스템 간섭 차단) */
+[data-bs-theme="dark"] #mainNav .nav-link {
+    color: inherit; /* 위에서 설정한 로직을 따르도록 상속 */
 }
