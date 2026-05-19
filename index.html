@@ -26,11 +26,11 @@
 
             .filter-btn {
                 font-family: 'Montserrat', sans-serif;
-                font-size: 0.75rem;
+                font-size: 0.6rem;
                 font-weight: 700;
                 letter-spacing: 0.1em;
                 text-transform: uppercase;
-                padding: 0.5rem 1.4rem;
+                padding: 0.4rem 1.1rem;
                 border: 1.5px solid #ccc;
                 background: transparent;
                 color: #888;
@@ -141,7 +141,10 @@
                 margin-top: 0.15rem;
             }
 
-            /* 필터 숨김 */
+            /* 그리드 간격 20% 축소 */
+            #portfolio-grid .portfolio-col {
+                margin-bottom: 1rem !important;
+            }
             .portfolio-col {
                 transition: opacity 0.3s ease, transform 0.3s ease;
             }
@@ -183,18 +186,17 @@
                 -->
                 <div class="filter-bar">
                     <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="original">Original Work</button>
-                    <button class="filter-btn" data-filter="picturebook">Picture Book</button>
-                    <button class="filter-btn" data-filter="storytelling">Visual Storytelling</button>
+                    <button class="filter-btn" data-filter="original">Original Book</button>
+                    <button class="filter-btn" data-filter="illustration">Illustration Work</button>
                     <button class="filter-btn" data-filter="character">Character Design</button>
                 </div>
 
-                <div class="row" id="portfolio-grid">
+                <div class="row" id="portfolio-grid" style="--bs-gutter-x: 1rem; --bs-gutter-y: 0;">
 
                     <!-- 
                         ★ 작품 추가하는 법:
                         아래 블록을 복사해서 붙여넣고,
-                        - data-category : 카테고리 (original / picturebook / storytelling / character)
+                        - data-category : 카테고리 (original / illustration / character)
                         - portfolioModal번호 : 순서대로 번호 올리기
                         - src : 썸네일 이미지 경로
                         - alt / 제목 / 서브타이틀 : 내용 변경
@@ -243,7 +245,7 @@
                     </div>
 
                     <!-- 3. Alice - Storytelling -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
                                 <div class="thumb-wrap">
@@ -258,13 +260,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Alice in Wonderland</div>
-                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 4. Amy - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
                                 <div class="thumb-wrap">
@@ -279,13 +281,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">My Best Friend, Amy</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 5. Squirrel - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
                                 <div class="thumb-wrap">
@@ -300,13 +302,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Squirrel Siblings</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 6. Seven Ravens - Storytelling -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
                                 <div class="thumb-wrap">
@@ -321,13 +323,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">The Seven Ravens</div>
-                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 7. Best Friend - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal7">
                                 <div class="thumb-wrap">
@@ -342,13 +344,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Searching for a Best Friend</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 8. Bad Good Manner - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal8">
                                 <div class="thumb-wrap">
@@ -363,13 +365,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Bad Good Manner</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 9. Little Farter - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal9">
                                 <div class="thumb-wrap">
@@ -384,13 +386,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">The Little Farter</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 10. Someone Bigger - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal10">
                                 <div class="thumb-wrap">
@@ -405,13 +407,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Someone Bigger</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 11. Rapunzel / Concept & Mood - Storytelling -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal11">
                                 <div class="thumb-wrap">
@@ -426,13 +428,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Concept & Mood</div>
-                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 12. Rabbit & Turtle - Storytelling -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal12">
                                 <div class="thumb-wrap">
@@ -447,13 +449,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">The Rabbit & the Turtle</div>
-                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 13. Wild Things - Storytelling -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal13">
                                 <div class="thumb-wrap">
@@ -468,13 +470,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Where the Wild Things Are</div>
-                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 14. Magic Salt Mill - Storytelling -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal14">
                                 <div class="thumb-wrap">
@@ -489,13 +491,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">The Magic Salt Mill</div>
-                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 15. My Little Sister - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal15">
                                 <div class="thumb-wrap">
@@ -510,13 +512,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">My Little Sister</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 16. Nina - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal16">
                                 <div class="thumb-wrap">
@@ -531,13 +533,13 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Nina, The Penguin</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 17. Don't cry - Picture Book -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal17">
                                 <div class="thumb-wrap">
@@ -552,7 +554,7 @@
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Don't cry, just speak up</div>
-                                <div class="portfolio-caption-subheading">Picture Book</div>
+                                <div class="portfolio-caption-subheading">Illustration Work</div>
                             </div>
                         </div>
                     </div>
