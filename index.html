@@ -1223,7 +1223,6 @@
             // =============================================
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // 활성 버튼 변경
                     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
 
@@ -1236,6 +1235,17 @@
                             col.classList.add('hidden');
                         }
                     });
+                });
+            });
+
+            // =============================================
+            // Works 네비 클릭 시 필터 All로 초기화
+            // =============================================
+            document.querySelector('a[href="#portfolio"]').addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+                document.querySelectorAll('.portfolio-col').forEach(col => {
+                    col.classList.remove('hidden');
                 });
             });
 
