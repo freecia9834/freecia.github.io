@@ -14,93 +14,6 @@
 
         <style>
             /* =============================================
-               히어로 섹션 (30vh, 작고 깔끔)
-            ============================================= */
-            header.masthead {
-                height: 30vh !important;
-                min-height: 220px !important;
-                padding-top: 0 !important;
-                padding-bottom: 0 !important;
-                display: flex !important;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                /* 
-                    ★ 작가님 그림으로 바꾸려면:
-                    background-image: url('assets/img/여기에파일명.jpg') !important;
-                    background-size: cover;
-                    background-position: center;
-                */
-                background-color: #fafaf8 !important;
-                background-image: none !important;
-                border-bottom: 1px solid #e8e8e4;
-            }
-
-            header.masthead .container {
-                text-align: center;
-            }
-
-            /* 히어로 이름 */
-            .hero-name {
-                font-family: 'Montserrat', sans-serif;
-                font-size: 2.2rem;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                color: #1a1a1a;
-                margin-bottom: 0.4rem;
-                text-transform: uppercase;
-            }
-
-            /* 히어로 서브타이틀 */
-            .hero-subtitle {
-                font-family: 'Roboto Slab', serif;
-                font-size: 0.95rem;
-                font-weight: 300;
-                color: #888;
-                letter-spacing: 0.1em;
-                margin-bottom: 0;
-            }
-
-            /* 히어로에 배경이미지 쓸 때 오버레이 */
-            header.masthead.has-bg-image::before {
-                content: "";
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                background-color: rgba(255, 255, 255, 0.6);
-                z-index: 0;
-            }
-            header.masthead.has-bg-image .container {
-                position: relative;
-                z-index: 1;
-            }
-
-            /* =============================================
-               About 한 줄 소개 (Works 섹션 바로 위)
-            ============================================= */
-            .about-strip {
-                background-color: #fff;
-                border-bottom: 1px solid #e8e8e4;
-                padding: 0.8rem 0;
-                text-align: center;
-            }
-
-            .about-strip p {
-                font-family: 'Roboto Slab', serif;
-                font-size: 1rem;
-                font-weight: 300;
-                color: #555;
-                line-height: 1.8;
-                max-width: 680px;
-                margin: 0 auto;
-            }
-
-            .about-strip p strong {
-                font-weight: 700;
-                color: #1a1a1a;
-            }
-
-            /* =============================================
                카테고리 필터 버튼
             ============================================= */
             .filter-bar {
@@ -236,18 +149,6 @@
             .portfolio-col.hidden {
                 display: none;
             }
-
-            /* Works 섹션 타이틀 */
-            .works-section-title {
-                font-family: 'Montserrat', sans-serif;
-                font-size: 0.7rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: #bbb;
-                text-align: center;
-                margin-bottom: 0;
-            }
         </style>
     </head>
     <body id="page-top">
@@ -269,37 +170,10 @@
         </nav>
 
         <!-- =============================================
-             히어로 섹션
-             ★ 배경 이미지 넣는 법:
-             1. 원하는 그림 파일을 assets/img/ 폴더에 업로드
-             2. 아래 header 태그에 class="masthead has-bg-image" 로 변경
-             3. style 태그 안의 background-image 주석을 해제하고 파일명 입력
-        ============================================= -->
-        <header class="masthead">
-            <div class="container">
-                <div class="hero-name">Freecia</div>
-                <div class="hero-subtitle">Author &amp; Illustrator &nbsp;·&nbsp; Picture Books</div>
-            </div>
-        </header>
-
-        <!-- =============================================
-             About 한 줄 소개
-             ★ 아래 텍스트를 원하시는 내용으로 수정하세요
-        ============================================= -->
-        <div class="about-strip">
-            <p>
-                I'm <strong>Freecia</strong>, an author and illustrator specializing in picture books.<br>
-                I create stories that speak to children's emotions — with warm textures, expressive characters, and a gentle sense of wonder.
-            </p>
-        </div>
-
-        <!-- =============================================
              Works 섹션 + 카테고리 필터
         ============================================= -->
-        <section class="page-section bg-light" id="portfolio" style="padding-top: 1.5rem;">
+        <section class="page-section bg-light" id="portfolio" style="padding-top: 5rem;">
             <div class="container">
-
-                <p class="works-section-title mb-3">Works</p>
 
                 <!-- 필터 버튼 -->
                 <!-- 
