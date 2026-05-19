@@ -13,400 +13,742 @@
         <link href="css/styles.css" rel="stylesheet" />
 
         <style>
+            /* =============================================
+               히어로 섹션 (30vh, 작고 깔끔)
+            ============================================= */
             header.masthead {
-                /* 1. 높이 설정: 50vh로 테스트해보시고, 너무 작으면 60~70으로 조절하세요 */
-                height: 90vh !important; 
-                min-height: 0 !important;   /* 최소 높이 제한 해제 */
-                
-                /* 2. 내부 여백(패딩) 강제 제거: 이게 핵심입니다! */
+                height: 30vh !important;
+                min-height: 220px !important;
                 padding-top: 0 !important;
                 padding-bottom: 0 !important;
-                
-                /* 3. 내용 정렬 */
                 display: flex !important;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 position: relative;
+                /* 
+                    ★ 작가님 그림으로 바꾸려면:
+                    background-image: url('assets/img/여기에파일명.jpg') !important;
+                    background-size: cover;
+                    background-position: center;
+                */
+                background-color: #fafaf8 !important;
+                background-image: none !important;
+                border-bottom: 1px solid #e8e8e4;
             }
 
-            /* 이미지 오버레이 (그림을 살짝 차분하게) */
-            header.masthead::before {
+            header.masthead .container {
+                text-align: center;
+            }
+
+            /* 히어로 이름 */
+            .hero-name {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 2.2rem;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                color: #1a1a1a;
+                margin-bottom: 0.4rem;
+                text-transform: uppercase;
+            }
+
+            /* 히어로 서브타이틀 */
+            .hero-subtitle {
+                font-family: 'Roboto Slab', serif;
+                font-size: 0.95rem;
+                font-weight: 300;
+                color: #888;
+                letter-spacing: 0.1em;
+                margin-bottom: 0;
+            }
+
+            /* 히어로에 배경이미지 쓸 때 오버레이 */
+            header.masthead.has-bg-image::before {
                 content: "";
                 position: absolute;
                 top: 0; left: 0; width: 100%; height: 100%;
-                background-color: rgba(0, 0, 0, 0.05);
+                background-color: rgba(255, 255, 255, 0.6);
                 z-index: 0;
             }
-            header.masthead .container {
+            header.masthead.has-bg-image .container {
                 position: relative;
                 z-index: 1;
+            }
+
+            /* =============================================
+               About 한 줄 소개 (Works 섹션 바로 위)
+            ============================================= */
+            .about-strip {
+                background-color: #fff;
+                border-bottom: 1px solid #e8e8e4;
+                padding: 2rem 0;
+                text-align: center;
+            }
+
+            .about-strip p {
+                font-family: 'Roboto Slab', serif;
+                font-size: 1rem;
+                font-weight: 300;
+                color: #555;
+                line-height: 1.8;
+                max-width: 680px;
+                margin: 0 auto;
+            }
+
+            .about-strip p strong {
+                font-weight: 700;
+                color: #1a1a1a;
+            }
+
+            /* =============================================
+               카테고리 필터 버튼
+            ============================================= */
+            .filter-bar {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 2rem 0 1.5rem;
+            }
+
+            .filter-btn {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.5rem 1.4rem;
+                border: 1.5px solid #ccc;
+                background: transparent;
+                color: #888;
+                cursor: pointer;
+                border-radius: 2px;
+                transition: all 0.2s ease;
+            }
+
+            .filter-btn:hover {
+                border-color: #1a1a1a;
+                color: #1a1a1a;
+            }
+
+            .filter-btn.active {
+                background-color: #1a1a1a;
+                border-color: #1a1a1a;
+                color: #fff;
+            }
+
+            /* =============================================
+               포트폴리오 그리드 — 썸네일 통일
+            ============================================= */
+            .portfolio-item {
+                position: relative;
+                overflow: hidden;
+                background: #f0f0ee;
+            }
+
+            /* 모든 썸네일 동일 비율 (4:3) */
+            .portfolio-item .thumb-wrap {
+                position: relative;
+                width: 100%;
+                padding-top: 75%; /* 4:3 비율 */
+                overflow: hidden;
+            }
+
+            .portfolio-item .thumb-wrap img {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s ease;
+            }
+
+            /* 호버 오버레이 — 통일 */
+            .portfolio-item .portfolio-hover {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background: rgba(26, 26, 26, 0.75);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: 2;
+            }
+
+            .portfolio-item:hover .portfolio-hover {
+                opacity: 1;
+            }
+
+            .portfolio-item:hover .thumb-wrap img {
+                transform: scale(1.04);
+            }
+
+            .portfolio-hover-content {
+                text-align: center;
+                color: #fff;
+            }
+
+            .portfolio-hover-content i {
+                display: block;
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .portfolio-hover-title {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                line-height: 1.4;
+                max-width: 160px;
+                display: block;
+            }
+
+            /* 캡션 (모든 아이템 동일 스타일) */
+            .portfolio-caption {
+                padding: 0.75rem 0.5rem 0.5rem;
+                background: #fff;
+            }
+
+            .portfolio-caption-heading {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: #1a1a1a;
+                letter-spacing: 0.05em;
+            }
+
+            .portfolio-caption-subheading {
+                font-family: 'Roboto Slab', serif;
+                font-size: 0.75rem;
+                font-weight: 300;
+                color: #aaa;
+                margin-top: 0.15rem;
+            }
+
+            /* 필터 숨김 */
+            .portfolio-col {
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .portfolio-col.hidden {
+                display: none;
+            }
+
+            /* Works 섹션 타이틀 */
+            .works-section-title {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #bbb;
+                text-align: center;
+                margin-bottom: 0;
             }
         </style>
     </head>
     <body id="page-top">
-        <!-- Navigation-->
+
+        <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="#page-top">ArtFreecia</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars ms-1"></i>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-    <li class="nav-item">
-        <a class="nav-link" href="#portfolio">Works</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#contact">Contact</a>
-    </li>
-</ul>
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">ArtFreecia</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Works</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- =============================================
+             히어로 섹션
+             ★ 배경 이미지 넣는 법:
+             1. 원하는 그림 파일을 assets/img/ 폴더에 업로드
+             2. 아래 header 태그에 class="masthead has-bg-image" 로 변경
+             3. style 태그 안의 background-image 주석을 해제하고 파일명 입력
+        ============================================= -->
+        <header class="masthead">
+            <div class="container">
+                <div class="hero-name">Freecia</div>
+                <div class="hero-subtitle">Author &amp; Illustrator &nbsp;·&nbsp; Picture Books</div>
+            </div>
+        </header>
+
+        <!-- =============================================
+             About 한 줄 소개
+             ★ 아래 텍스트를 원하시는 내용으로 수정하세요
+        ============================================= -->
+        <div class="about-strip">
+            <p>
+                I'm <strong>Freecia</strong>, a Korean author and illustrator specializing in picture books.<br>
+                I create stories that speak to children's emotions — with warm textures, expressive characters, and a gentle sense of wonder.
+            </p>
         </div>
-    </div>
-</nav>
-        <!-- Masthead-->
-    
-        <header class="masthead" style="background-image: url('assets/img/header-bg.jpg') !important;">
-    <div class="container">
-        <div class="masthead-subheading" style="color: #000000 !important; text-shadow: none !important;">Illustrator & Author</div>
-<div class="masthead-heading text-uppercase" style="color: #000000 !important; text-shadow: none !important;">The World of Freecia</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">View Works</a>
-    </div>
-</header>
-       
+
+        <!-- =============================================
+             Works 섹션 + 카테고리 필터
+        ============================================= -->
         <section class="page-section bg-light" id="portfolio">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase">Works</h2>
-        </div>
+            <div class="container">
 
-        <div class="row">
-    <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Roy Thinks He's Human</span>
-                    </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/1.jpg" alt="Roy 1" />
-            </a>
-        </div>
-    </div>
+                <p class="works-section-title mb-3">Works</p>
 
-    <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Roy & Friends/IP Characters</span>
-                    </div>
+                <!-- 필터 버튼 -->
+                <!-- 
+                    ★ 카테고리 추가하는 법:
+                    data-filter="카테고리명" 버튼을 추가하고,
+                    해당 작품의 col div에 data-category="카테고리명" 을 추가하면 돼요
+                -->
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="original">Original Work</button>
+                    <button class="filter-btn" data-filter="picturebook">Picture Book</button>
+                    <button class="filter-btn" data-filter="storytelling">Visual Storytelling</button>
+                    <button class="filter-btn" data-filter="character">Character Design</button>
                 </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/2.jpg" alt="Roy 2" />
-            </a>
-        </div>
-    </div>
 
-    <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Alice in Wonderland</span>
-                    </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/3.jpg" alt="Alice" />
-            </a>
-        </div>
-    </div>
+                <div class="row" id="portfolio-grid">
 
-    <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">My Best Friend, Amy</span>
-                    </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/4.jpg" alt="Amy" />
-            </a>
-        </div>
-    </div>
+                    <!-- 
+                        ★ 작품 추가하는 법:
+                        아래 블록을 복사해서 붙여넣고,
+                        - data-category : 카테고리 (original / picturebook / storytelling / character)
+                        - portfolioModal번호 : 순서대로 번호 올리기
+                        - src : 썸네일 이미지 경로
+                        - alt / 제목 / 서브타이틀 : 내용 변경
+                    -->
 
-    <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Squirrel Siblings</span>
+                    <!-- 1. Roy - Original -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="original">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/1.jpg" alt="Roy Thinks He's Human" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Roy Thinks He's Human</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Roy Thinks He's Human</div>
+                                <div class="portfolio-caption-subheading">Original Picture Book</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/5.jpg" alt="Squirrel" />
-            </a>
-        </div>
-    </div>
-            
-        <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">The Seven Ravens</span>
-                    </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/6.jpg" alt="Ravens" />
-            </a>
-        </div>
-    </div>
-            
-          <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal7">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Searching for a Best Friend</span>
-                    </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/7.jpg" alt="Best Friend" />
-            </a>
-        </div>
-    </div>
 
-             <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal8">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Bad Good Manner</span>
+                    <!-- 2. Roy & Friends - Character -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="character">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/2.jpg" alt="Roy & Friends" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Roy & Friends / IP Characters</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Roy & Friends / IP Characters</div>
+                                <div class="portfolio-caption-subheading">Character Design</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/8.jpg" alt="manner" />
-            </a>
-        </div>
-    </div>
 
-            <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal9">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">The Little Farter</span>
+                    <!-- 3. Alice - Storytelling -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/3.jpg" alt="Alice in Wonderland" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Alice in Wonderland</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Alice in Wonderland</div>
+                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/9.jpg" alt="Farter" />
-            </a>
-        </div>
-    </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal10">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Someone Bigger</span>
-                    </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/10.jpg" alt="Bigger" />
-            </a>
-        </div>
-    </div>
 
-            <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="portfolio-item">
-            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal11">
-                <div class="portfolio-hover">
-                    <div class="portfolio-hover-content">
-                        <i class="fas fa-plus fa-3x"></i>
-                        <span class="portfolio-hover-title">Rapunzel</span>
+                    <!-- 4. Amy - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/4.jpg" alt="My Best Friend, Amy" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">My Best Friend, Amy</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">My Best Friend, Amy</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <img class="img-fluid w-100" src="assets/img/portfolio/11.jpg" alt="Rapunzel" />
-            </a>
-        </div>
-    </div>
 
-            <div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
-        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal12">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                    <!-- 5. Squirrel - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/5.jpg" alt="Squirrel Siblings" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Squirrel Siblings</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Squirrel Siblings</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Seven Ravens - Storytelling -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/6.jpg" alt="The Seven Ravens" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">The Seven Ravens</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">The Seven Ravens</div>
+                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Best Friend - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal7">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/7.jpg" alt="Searching for a Best Friend" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Searching for a Best Friend</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Searching for a Best Friend</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Bad Good Manner - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal8">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/8.jpg" alt="Bad Good Manner" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Bad Good Manner</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Bad Good Manner</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. Little Farter - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal9">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/9.jpg" alt="The Little Farter" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">The Little Farter</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">The Little Farter</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10. Someone Bigger - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal10">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/10.jpg" alt="Someone Bigger" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Someone Bigger</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Someone Bigger</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 11. Rapunzel / Concept & Mood - Storytelling -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal11">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/11.jpg" alt="Concept & Mood" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Concept & Mood</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Concept & Mood</div>
+                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 12. Rabbit & Turtle - Storytelling -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal12">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/12.jpg" alt="The Rabbit & the Turtle" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">The Rabbit & the Turtle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">The Rabbit & the Turtle</div>
+                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 13. Wild Things - Storytelling -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal13">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/13.jpg" alt="Where the Wild Things Are" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Where the Wild Things Are</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Where the Wild Things Are</div>
+                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 14. Magic Salt Mill - Storytelling -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="storytelling">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal14">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/14.jpg" alt="The Magic Salt Mill" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">The Magic Salt Mill</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">The Magic Salt Mill</div>
+                                <div class="portfolio-caption-subheading">Visual Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 15. My Little Sister - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal15">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/15.jpg" alt="My Little Sister" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">My Little Sister</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">My Little Sister</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 16. Nina - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal16">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/16.jpg" alt="Nina, The Penguin" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Nina, The Penguin</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Nina, The Penguin</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 17. Don't cry - Picture Book -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="picturebook">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal17">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/17.jpg" alt="Don't cry, just speak up" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Don't cry, just speak up</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Don't cry, just speak up</div>
+                                <div class="portfolio-caption-subheading">Picture Book</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- end #portfolio-grid -->
             </div>
-            <img class="img-fluid" src="assets/img/portfolio/12.jpg" alt="The Rabbit & the Turtle" />
-        </a>
-        <div class="portfolio-caption">
-            <div class="portfolio-caption-heading">The Rabbit & the Turtle</div>
-            <div class="portfolio-caption-subheading text-muted">Visual Storytelling</div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
-        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal13">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/13.jpg" alt="Where the Wild Things Are" />
-        </a>
-        <div class="portfolio-caption">
-            <div class="portfolio-caption-heading">Where the Wild Things Are</div>
-            <div class="portfolio-caption-subheading text-muted">Visual Storytelling</div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
-        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal14">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/14.jpg" alt="The Magic Salt Mill" />
-        </a>
-        <div class="portfolio-caption">
-            <div class="portfolio-caption-heading">The Magic Salt Mill</div>
-            <div class="portfolio-caption-subheading text-muted">Visual Storytelling</div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
-        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal15">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/15.jpg" alt="My Little Sister" />
-        </a>
-        <div class="portfolio-caption">
-            <div class="portfolio-caption-heading">My Little Sister</div>
-            <div class="portfolio-caption-subheading text-muted">Visual Storytelling</div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
-        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal16">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/16.jpg" alt="Nina" />
-        </a>
-        <div class="portfolio-caption">
-            <div class="portfolio-caption-heading">Nina, The Penguin</div>
-            <div class="portfolio-caption-subheading text-muted">Visual Storytelling</div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
-        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal17">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/17.jpg" alt="Don't cry" />
-        </a>
-        <div class="portfolio-caption">
-            <div class="portfolio-caption-heading">Don't cry, just speak up</div>
-            <div class="portfolio-caption-subheading text-muted">Visual Storytelling</div>
-        </div>
-    </div>
-</div>
         </section>
-        
-              <!-- Contact-->
+
+        <!-- Contact -->
         <section class="page-section" id="contact" style="
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                url('assets/img/contact-bg.jpg'); /* 1. 작가님의 배경그림 경로로 수정하세요 */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    padding: 6rem 0; /* 2. 기존보다 세로 폭을 약 20% 이상 줄여 컴팩트하게 설정했습니다 */
-    color: white;
-">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Get In Touch</h2>
-            <h3 class="section-subheading mb-5" style="color: #ced4da; font-style: italic;">
-                I am always open to new creative opportunities and global collaborations.
-            </h3>
-        </div>
-
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-8">
-                <div class="mb-5">
-                    <h4 class="mb-4" style="font-weight: 700; letter-spacing: 1px;">Email Address</h4>
-                    
-                    <button class="btn btn-primary btn-xl text-uppercase shadow-lg" id="copyBtn" onclick="copyEmailToClipboard()" style="padding: 1.25rem 2.5rem; font-weight: 700;">
-                        <i class="fas fa-copy me-2"></i> Copy Email Address
-                    </button>
-                    
-                    <p class="mt-4" style="font-size: 1.2rem; color: #f8f9fa; opacity: 0.8; letter-spacing: 0.5px;">
-                        freecia9834@gmail.com
-                    </p>
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                        url('assets/img/contact-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 6rem 0;
+            color: white;
+        ">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Get In Touch</h2>
+                    <h3 class="section-subheading mb-5" style="color:#ced4da; font-style:italic;">
+                        I am always open to new creative opportunities and global collaborations.
+                    </h3>
                 </div>
-
-                <hr class="my-5" style="border-color: rgba(255,255,255,0.1); width: 50%; margin: 0 auto;">
-
-                <div class="social-channels">
-                    <h4 class="mb-4" style="font-weight: 700; letter-spacing: 1px;">Business Channels</h4>
-                    <div class="d-flex justify-content-center gap-4">
-                        <a class="btn btn-dark btn-social" href="https://www.instagram.com/freecia_illustration" target="_blank" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 50%;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="btn btn-dark btn-social" href="https://www.behance.net/heejinseo5" target="_blank" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 50%;">
-                            <i class="fab fa-behance"></i>
-                        </a>
-                        <a class="btn btn-dark btn-social" href="https://notefolio.net/freecia9834" target="_blank" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 50%;">
-                            <i class="fas fa-palette"></i>
-                        </a>
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <div class="mb-5">
+                            <h4 class="mb-4" style="font-weight:700; letter-spacing:1px;">Email Address</h4>
+                            <button class="btn btn-primary btn-xl text-uppercase shadow-lg" id="copyBtn" onclick="copyEmailToClipboard()" style="padding:1.25rem 2.5rem; font-weight:700;">
+                                <i class="fas fa-copy me-2"></i> Copy Email Address
+                            </button>
+                            <p class="mt-4" style="font-size:1.2rem; color:#f8f9fa; opacity:0.8; letter-spacing:0.5px;">
+                                freecia9834@gmail.com
+                            </p>
+                        </div>
+                        <hr class="my-5" style="border-color:rgba(255,255,255,0.1); width:50%; margin:0 auto;">
+                        <div class="social-channels">
+                            <h4 class="mb-4" style="font-weight:700; letter-spacing:1px;">Business Channels</h4>
+                            <div class="d-flex justify-content-center gap-4">
+                                <a class="btn btn-dark btn-social" href="https://www.instagram.com/freecia_illustration" target="_blank" style="width:60px; height:60px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; border-radius:50%;">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-dark btn-social" href="https://www.behance.net/heejinseo5" target="_blank" style="width:60px; height:60px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; border-radius:50%;">
+                                    <i class="fab fa-behance"></i>
+                                </a>
+                                <a class="btn btn-dark btn-social" href="https://notefolio.net/freecia9834" target="_blank" style="width:60px; height:60px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; border-radius:50%;">
+                                    <i class="fas fa-palette"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<script>
-function copyEmailToClipboard() {
-    // 복사할 이메일 주소
-    const emailAddress = "freecia9834@gmail.com";
-    
-    // 클립보드 복사 실행
-    navigator.clipboard.writeText(emailAddress).then(function() {
-        // 복사 성공 시 알림창 (작가님이 요청하신 스타일)
-        alert("Email address copied! Feel free to paste it.");
-    }).catch(function(err) {
-        // 오류 발생 시 콘솔 출력
-        console.error('Unable to copy email: ', err);
-    });
-}
-</script>
-        <!-- Footer-->
+        <!-- Footer -->
         <footer class="footer py-4 bg-light">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-12 text-center text-muted small">
-                Copyright &copy; ArtFreecia 2026. All Rights Reserved.
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center text-muted small">
+                        Copyright &copy; ArtFreecia 2026. All Rights Reserved.
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</footer>
-        <!-- Portfolio Modals-->
+        </footer>
+
+        <!-- =============================================
+             Portfolio Modals (원본 그대로 유지)
+        ============================================= -->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -417,32 +759,16 @@ function copyEmailToClipboard() {
                         <div class="modal-body">
                             <h2 class="text-uppercase">Roy Thinks He's Human</h2>
                             <p class="item-intro text-muted">A heartwarming journey of identity and unconditional love - Picture Book</p>
-
                             <img class="img-fluid d-block mx-auto mb-5" src="assets/img/portfolio/roy_main_desc.jpg" alt="Roy Project Overview" />
-
-                            <div class="text-start mb-5" style="line-height: 1.8;">
-                                <h4 class="mb-3" style="font-weight: 700;">Synopsis</h4>
-                                <p class="text-muted">
-                                    Every morning, Roy starts his day in front of his mother’s vanity, wearing a purple hair roller. 
-                                    Deeply wishing to mirror every gesture and word of the person he loves most, Roy decides to surprise her with the ultimate act of kindness: doing the laundry by himself.
-                                </p>
-                                <p class="text-muted">
-                                    However, his innocent plan quickly spirals into a chaotic flood, turning the living room into a sea of white bubbles. 
-                                    When his mother opens the door, she is met with something unexpected—not a mess, but a magnificent <strong>'Soap Sculpture of Herself,'</strong> carefully crafted by Roy's tiny paws. 
-                                    In that shimmering bubble, she discovers Roy’s true heart: <em>"Mom, I love you this much."</em>
-                                </p>
-
+                            <div class="text-start mb-5" style="line-height:1.8;">
+                                <h4 class="mb-3" style="font-weight:700;">Synopsis</h4>
+                                <p class="text-muted">Every morning, Roy starts his day in front of his mother's vanity, wearing a purple hair roller. Deeply wishing to mirror every gesture and word of the person he loves most, Roy decides to surprise her with the ultimate act of kindness: doing the laundry by himself.</p>
+                                <p class="text-muted">However, his innocent plan quickly spirals into a chaotic flood, turning the living room into a sea of white bubbles. When his mother opens the door, she is met with something unexpected—not a mess, but a magnificent <strong>'Soap Sculpture of Herself,'</strong> carefully crafted by Roy's tiny paws. In that shimmering bubble, she discovers Roy's true heart: <em>"Mom, I love you this much."</em></p>
                                 <hr class="my-5">
-
-                                <h4 class="mb-3" style="font-weight: 700; color: #333;">Artistic Direction</h4>
-    <p class="text-muted">
-        The visual language of this book focuses on <strong>tactile warmth</strong>. Using soft, grainy textures and a gentle pastel palette, I aimed to evoke the cozy feeling of a puppy’s fur and the comforting scent of home. 
-    </p>
-    <p class="text-muted">
-        Each page is designed to lead the reader’s eye through Roy’s innocent perspective, culminating in the "Bubble Sculpture" scene—a visual climax where light and foam merge to create a moment of pure, emotional magic.
-    </p>
+                                <h4 class="mb-3" style="font-weight:700; color:#333;">Artistic Direction</h4>
+                                <p class="text-muted">The visual language of this book focuses on <strong>tactile warmth</strong>. Using soft, grainy textures and a gentle pastel palette, I aimed to evoke the cozy feeling of a puppy's fur and the comforting scent of home.</p>
+                                <p class="text-muted">Each page is designed to lead the reader's eye through Roy's innocent perspective, culminating in the "Bubble Sculpture" scene—a visual climax where light and foam merge to create a moment of pure, emotional magic.</p>
                             </div>
-
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy0.jpg" alt="Roy Detail 0" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy1.jpg" alt="Roy Detail 1" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy2.jpg" alt="Roy Detail 2" />
@@ -453,29 +779,14 @@ function copyEmailToClipboard() {
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy7.jpg" alt="Roy Detail 7" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy8.jpg" alt="Roy Detail 8" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy9.jpg" alt="Roy Detail 9" />
-                            <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy10.jpg" alt="Roy Detail 10" /> 
-                            
+                            <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy10.jpg" alt="Roy Detail 10" />
                             <ul class="list-inline">
-    <li>
-        <strong>Role:</strong>
-        Author & Illustrator (Original Story)
-    </li>
-    <li>
-        <strong>Status:</strong>
-        Dummy Book Completed / Ready for Publication
-    </li>
-    <li>
-        <strong>Category:</strong>
-        Picture Book / Character Design
-    </li>
-</ul>
-
-                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                <i class="fas fa-xmark me-1"></i> Close Project
-                            </button>
-                            <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal2" type="button">
-                            Next Project →
-                        </button>
+                                <li><strong>Role:</strong> Author & Illustrator (Original Story)</li>
+                                <li><strong>Status:</strong> Dummy Book Completed / Ready for Publication</li>
+                                <li><strong>Category:</strong> Picture Book / Character Design</li>
+                            </ul>
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-xmark me-1"></i> Close Project</button>
+                            <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal2" type="button">Next Project →</button>
                         </div>
                     </div>
                 </div>
@@ -483,8 +794,8 @@ function copyEmailToClipboard() {
         </div>
     </div>
 </div>
-        <!-- Portfolio item 2 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
@@ -494,44 +805,27 @@ function copyEmailToClipboard() {
                         <div class="modal-body">
                             <h2 class="text-uppercase">Character Design</h2>
                             <p class="item-intro text-muted">Character IP Development & Global Branding Strategy</p>
-
-                            <div class="text-start mb-5" style="line-height: 1.8;">
-                                <h4 class="mb-3" style="font-weight: 700;">01. Roy</h4>
-                                <p class="text-muted">
-                                    A poodle who finds identity through human-like gestures. Roy’s design focuses on 'Emotional Resonance,' 
-                                    using soft textures and warm palettes to evoke a sense of companionship.
-                                </p>
+                            <div class="text-start mb-5" style="line-height:1.8;">
+                                <h4 class="mb-3" style="font-weight:700;">01. Roy</h4>
+                                <p class="text-muted">A poodle who finds identity through human-like gestures. Roy's design focuses on 'Emotional Resonance,' using soft textures and warm palettes to evoke a sense of companionship.</p>
                             </div>
-                            
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy_friends_1.jpg" alt="Roy Detail 1" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy_friends_2.jpg" alt="Roy Detail 2" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/roy_friends_3.jpg" alt="Roy Detail 3" />
-
                             <hr class="my-5">
-
-                            <div class="text-start mb-5" style="line-height: 1.8;">
-                                <h4 class="mb-3" style="font-weight: 700;">02. Cheetah (Oh My Ciabatta)</h4>
-                                <p class="text-muted">
-                                    A cheerful cheetah who delivers happiness along with ciabatta. 
-                                    Designed with vibrant colors and energetic lines for high scalability in character licensing.
-                                </p>
+                            <div class="text-start mb-5" style="line-height:1.8;">
+                                <h4 class="mb-3" style="font-weight:700;">02. Cheetah (Oh My Ciabatta)</h4>
+                                <p class="text-muted">A cheerful cheetah who delivers happiness along with ciabatta. Designed with vibrant colors and energetic lines for high scalability in character licensing.</p>
                             </div>
-
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/cheetah_1.JPG" alt="Cheetah Detail 1" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/cheetah_2.jpg" alt="Cheetah Detail 2" />
                             <img class="img-fluid d-block mx-auto mb-4" src="assets/img/portfolio/cheetah_3.jpg" alt="Cheetah Detail 3" />
-
                             <ul class="list-inline mt-5">
                                 <li><strong>Client:</strong> Independent IP Development</li>
                                 <li><strong>Category:</strong> Character Design / IP Branding</li>
                             </ul>
-
-                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                <i class="fas fa-xmark me-1"></i> Close Project
-                            </button>
-                            <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal3" type="button">
-                            Next Project →
-                        </button>
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-xmark me-1"></i> Close Project</button>
+                            <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal3" type="button">Next Project →</button>
                         </div>
                     </div>
                 </div>
@@ -539,522 +833,374 @@ function copyEmailToClipboard() {
         </div>
     </div>
 </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal">
-                <img src="assets/img/close-icon.svg" alt="Close modal" />
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            
-                            <h2 class="text-uppercase mb-3">Alice in Wonderland</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
 
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_1.jpg" alt="Alice Sub 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_2.jpg" alt="Alice Sub 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_3.jpg" alt="Alice Sub 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_4.jpg" alt="Alice Sub 4" /></div>
-
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">A visual storytelling project expanding the world of Alice.</p>
-                                    
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            <i class="fas fa-times me-1"></i>
-                                            Close Project
-                                        </button>
-                                        
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal4" type="button">
-                                            Next Project
-                                            <i class="fas fa-arrow-right ms-1"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Alice in Wonderland</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_1.jpg" alt="Alice Sub 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_2.jpg" alt="Alice Sub 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_3.jpg" alt="Alice Sub 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/alice_4.jpg" alt="Alice Sub 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">A visual storytelling project expanding the world of Alice.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal4" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 4 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">My Best Friend, Amy</h2>
-                            <p class="item-intro text-muted mb-5">Character-driven Narrative Illustration</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_1.jpg" alt="Amy 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_2.jpg" alt="Amy 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_3.jpg" alt="Amy 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_4.jpg" alt="Amy 4" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">A heartwarming story about friendship and daily discovery.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal5" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">My Best Friend, Amy</h2>
+            <p class="item-intro text-muted mb-5">Character-driven Narrative Illustration</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_1.jpg" alt="Amy 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_2.jpg" alt="Amy 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_3.jpg" alt="Amy 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/amy_4.jpg" alt="Amy 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">A heartwarming story about friendship and daily discovery.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal5" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 5 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Squirrel Siblings</h2>
-                            <p class="item-intro text-muted mb-5">Nature & Animal Storytelling</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_1.jpg" alt="Squirrel 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_2.jpg" alt="Squirrel 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_3.jpg" alt="Squirrel 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_4.jpg" alt="Squirrel 4" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Expressive animal characters in a vibrant woodland setting.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal6" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Squirrel Siblings</h2>
+            <p class="item-intro text-muted mb-5">Nature & Animal Storytelling</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_1.jpg" alt="Squirrel 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_2.jpg" alt="Squirrel 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_3.jpg" alt="Squirrel 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/squirrel_4.jpg" alt="Squirrel 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Expressive animal characters in a vibrant woodland setting.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal6" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 6 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">The Seven Ravens</h2>
-                            <p class="item-intro text-muted mb-5">Classic Fairytale Re-imagined</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_1.jpg" alt="Ravens 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_2.jpg" alt="Ravens 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_3.jpg" alt="Ravens 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_4.jpg" alt="Ravens 4" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Dark yet mystical atmosphere capturing the essence of the Grimm brothers.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal7" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">The Seven Ravens</h2>
+            <p class="item-intro text-muted mb-5">Classic Fairytale Re-imagined</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_1.jpg" alt="Ravens 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_2.jpg" alt="Ravens 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_3.jpg" alt="Ravens 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/ravens_4.jpg" alt="Ravens 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Dark yet mystical atmosphere capturing the essence of the Grimm brothers.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal7" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 7 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Searching for a Best Friend</h2>
-                            <p class="item-intro text-muted mb-5">Editorial Illustration for Educational Media</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_1.jpg" alt="Friend 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_2.jpg" alt="Friend 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_3.jpg" alt="Friend 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_4.jpg" alt="Friend 4" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Strategic layout design showcasing interior cutaway perspectives.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal8" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Searching for a Best Friend</h2>
+            <p class="item-intro text-muted mb-5">Editorial Illustration for Educational Media</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_1.jpg" alt="Friend 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_2.jpg" alt="Friend 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_3.jpg" alt="Friend 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/friend_4.jpg" alt="Friend 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Strategic layout design showcasing interior cutaway perspectives.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal8" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 8 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Bad Good Manner</h2>
-                            <p class="item-intro text-muted mb-5">Lifestyle & Editorial Work</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_1.jpg" alt="Manner 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_2.jpg" alt="Manner 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_3.jpg" alt="Manner 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_4.jpg" alt="Manner 4" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Witty character acting and situational storytelling.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal9" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Bad Good Manner</h2>
+            <p class="item-intro text-muted mb-5">Lifestyle & Editorial Work</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_1.jpg" alt="Manner 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_2.jpg" alt="Manner 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_3.jpg" alt="Manner 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/manner_4.jpg" alt="Manner 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Witty character acting and situational storytelling.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal9" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 9 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">The Little Farter</h2>
-                            <p class="item-intro text-muted mb-5">Humorous Character Illustration</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_1.jpg" alt="Farter 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_2.jpg" alt="Farter 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_3.jpg" alt="Farter 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_4.jpg" alt="Farter 4" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Capturing humorous daily life moments with expressive movements.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal10" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">The Little Farter</h2>
+            <p class="item-intro text-muted mb-5">Humorous Character Illustration</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_1.jpg" alt="Farter 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_2.jpg" alt="Farter 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_3.jpg" alt="Farter 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/farter_4.jpg" alt="Farter 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Capturing humorous daily life moments with expressive movements.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal10" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 10 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Someone Bigger</h2>
-                            <p class="item-intro text-muted mb-5">World Building & Scale Perspective</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/bigger_1.jpg" alt="Bigger 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/bigger_2.jpg" alt="Bigger 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/bigger_3.jpg" alt="Bigger 3" /></div>
 
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Demonstrating grand-scale world building and dynamic viewpoints.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal11" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Someone Bigger</h2>
+            <p class="item-intro text-muted mb-5">World Building & Scale Perspective</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/bigger_1.jpg" alt="Bigger 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/bigger_2.jpg" alt="Bigger 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/bigger_3.jpg" alt="Bigger 3" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Demonstrating grand-scale world building and dynamic viewpoints.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal11" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <!-- Portfolio item 11 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Concept & Mood</h2>
-                            <p class="item-intro text-muted mb-5">World Building & Atmospheric Illustrations</p>
-                            
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rapunzel_1.jpg" alt="Rapunzel 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rapunzel_2.jpg" alt="Rapunzel 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rapunzel_3.jpg" alt="Rapunzel 3" /></div>
-                      
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">A collection of creative world-building projects exploring various moods.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal12" type="button">Next Project</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+<div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Concept & Mood</h2>
+            <p class="item-intro text-muted mb-5">World Building & Atmospheric Illustrations</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rapunzel_1.jpg" alt="Rapunzel 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rapunzel_2.jpg" alt="Rapunzel 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rapunzel_3.jpg" alt="Rapunzel 3" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">A collection of creative world-building projects exploring various moods.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal12" type="button">Next Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">The Rabbit & the Turtle</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_1.jpg" alt="Rabbit Turtle 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_2.jpg" alt="Rabbit Turtle 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_3.jpg" alt="Rabbit Turtle 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_4.jpg" alt="Rabbit Turtle 4" /></div>
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">A visual storytelling project about persistence and pace.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal13" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+<div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">The Rabbit & the Turtle</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_1.jpg" alt="Rabbit Turtle 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_2.jpg" alt="Rabbit Turtle 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_3.jpg" alt="Rabbit Turtle 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/rabbit_turtle_4.jpg" alt="Rabbit Turtle 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">A visual storytelling project about persistence and pace.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal13" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
 
 <div class="portfolio-modal modal fade" id="portfolioModal13" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Where the Wild Things Are</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_1.jpg" alt="Wild Things 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_2.jpg" alt="Wild Things 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_3.jpg" alt="Wild Things 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_4.jpg" alt="Wild Things 4" /></div>
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Exploring the untamed landscapes of imagination.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal14" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal-dialog modal-xl"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Where the Wild Things Are</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_1.jpg" alt="Wild Things 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_2.jpg" alt="Wild Things 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_3.jpg" alt="Wild Things 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/wild_things_4.jpg" alt="Wild Things 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Exploring the untamed landscapes of imagination.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal14" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
 
 <div class="portfolio-modal modal fade" id="portfolioModal14" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">The Magic Salt Mill</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_1.jpg" alt="Salt Mill 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_2.jpg" alt="Salt Mill 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_3.jpg" alt="Salt Mill 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_4.jpg" alt="Salt Mill 4" /></div>
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">A mythical tale explaining the salty secret of the sea.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal15" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal-dialog modal-xl"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">The Magic Salt Mill</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_1.jpg" alt="Salt Mill 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_2.jpg" alt="Salt Mill 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_3.jpg" alt="Salt Mill 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/salt_mill_4.jpg" alt="Salt Mill 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">A mythical tale explaining the salty secret of the sea.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal15" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
 
 <div class="portfolio-modal modal fade" id="portfolioModal15" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">My Little Sister</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/little_sister_1.jpg" alt="Little Sister 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/little_sister_2.jpg" alt="Little Sister 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/little_sister_3.jpg" alt="Little Sister 3" /></div>
-                              <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Precious daily moments shared with a sibling.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal16" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal-dialog modal-xl"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">My Little Sister</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/little_sister_1.jpg" alt="Little Sister 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/little_sister_2.jpg" alt="Little Sister 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/little_sister_3.jpg" alt="Little Sister 3" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Precious daily moments shared with a sibling.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal16" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
 
 <div class="portfolio-modal modal fade" id="portfolioModal16" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Nina, The Penguin who wants to fly</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/nina_penguin_1.jpg" alt="Nina 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/nina_penguin_2.jpg" alt="Nina 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/nina_penguin_3.jpg" alt="Nina 3" /></div>
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">A brave story of a penguin reaching for the sky.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal17" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal-dialog modal-xl"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Nina, The Penguin who wants to fly</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/nina_penguin_1.jpg" alt="Nina 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/nina_penguin_2.jpg" alt="Nina 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/nina_penguin_3.jpg" alt="Nina 3" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">A brave story of a penguin reaching for the sky.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
+                    <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal17" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
 
 <div class="portfolio-modal modal fade" id="portfolioModal17" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="modal-body text-center">
-                            <h2 class="text-uppercase mb-3">Don't cry, just speak up</h2>
-                            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_1.jpg" alt="Speak Up 1" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_2.jpg" alt="Speak Up 2" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_3.jpg" alt="Speak Up 3" /></div>
-                            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_4.jpg" alt="Speak Up 4" /></div>
-                            <div class="row justify-content-center mt-5">
-                                <div class="col-lg-8">
-                                    <p class="mb-5">Empowering children to express their feelings.</p>
-                                    <div class="d-flex justify-content-center gap-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
-                                        <button class="btn btn-primary btn-xl text-uppercase next-modal" data-next="#portfolioModal18" type="button">Next Project<i class="fas fa-arrow-right ms-1"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal-dialog modal-xl"><div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+        <div class="container"><div class="row justify-content-center"><div class="col-lg-12"><div class="modal-body text-center">
+            <h2 class="text-uppercase mb-3">Don't cry, just speak up</h2>
+            <p class="item-intro text-muted mb-5">Visual Storytelling Project</p>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_1.jpg" alt="Speak Up 1" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_2.jpg" alt="Speak Up 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_3.jpg" alt="Speak Up 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/speak_up_4.jpg" alt="Speak Up 4" /></div>
+            <div class="row justify-content-center mt-5"><div class="col-lg-8">
+                <p class="mb-5">Empowering children to express their feelings.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div></div>
+        </div></div></div></div>
+    </div></div>
 </div>
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
 
-    <script>
-        // 다음 모달로 바로 넘어가는 기능
-        document.querySelectorAll('.next-modal').forEach(button => {
-            button.addEventListener('click', function() {
-                const nextModalId = this.getAttribute('data-next');
-                const currentModalElement = this.closest('.modal');
-                const currentModal = bootstrap.Modal.getInstance(currentModalElement);
-                
-                if (currentModal) {
-                    currentModal.hide(); // 현재창 닫기
-                    
-                    // 닫히는 애니메이션(약 0.4초) 후 다음 창 열기
-                    setTimeout(() => {
-                        const nextModalElement = document.querySelector(nextModalId);
-                        if (nextModalElement) {
-                            const nextModal = new bootstrap.Modal(nextModalElement);
-                            nextModal.show();
+        <!-- Bootstrap core JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
+
+        <script>
+            // =============================================
+            // 카테고리 필터 기능
+            // =============================================
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 활성 버튼 변경
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    document.querySelectorAll('.portfolio-col').forEach(col => {
+                        if (filter === 'all' || col.getAttribute('data-category') === filter) {
+                            col.classList.remove('hidden');
+                        } else {
+                            col.classList.add('hidden');
                         }
-                    }, 400); 
-                }
+                    });
+                });
             });
-        });
-    </script>
-</body>
+
+            // =============================================
+            // 다음 모달로 넘어가는 기능 (원본 유지)
+            // =============================================
+            document.querySelectorAll('.next-modal').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextModalId = this.getAttribute('data-next');
+                    const currentModalElement = this.closest('.modal');
+                    const currentModal = bootstrap.Modal.getInstance(currentModalElement);
+                    if (currentModal) {
+                        currentModal.hide();
+                        setTimeout(() => {
+                            const nextModalElement = document.querySelector(nextModalId);
+                            if (nextModalElement) {
+                                const nextModal = new bootstrap.Modal(nextModalElement);
+                                nextModal.show();
+                            }
+                        }, 400);
+                    }
+                });
+            });
+
+            // =============================================
+            // 이메일 복사
+            // =============================================
+            function copyEmailToClipboard() {
+                navigator.clipboard.writeText("freecia9834@gmail.com").then(function() {
+                    alert("Email address copied! Feel free to paste it.");
+                }).catch(function(err) {
+                    console.error('Unable to copy email: ', err);
+                });
+            }
+        </script>
+    </body>
 </html>
