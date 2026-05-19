@@ -151,6 +151,34 @@
             .portfolio-col.hidden {
                 display: none;
             }
+
+            /* 모달 내부 버튼 — 카테고리 필터 버튼과 동일한 스타일 */
+            .portfolio-modal .btn {
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 0.6rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.1em !important;
+                text-transform: uppercase !important;
+                padding: 0.4rem 1.1rem !important;
+                border: 1.5px solid #ccc !important;
+                background: transparent !important;
+                color: #555 !important;
+                cursor: pointer !important;
+                border-radius: 2px !important;
+                box-shadow: none !important;
+                transition: all 0.2s ease !important;
+            }
+            .portfolio-modal .btn:hover {
+                border-color: #1a1a1a !important;
+                color: #1a1a1a !important;
+                background: transparent !important;
+            }
+            /* 모달 닫기 버튼 — 다크모드에서 보이도록 */
+            @media (prefers-color-scheme: dark) {
+                .close-modal img {
+                    filter: invert(1);
+                }
+            }
         </style>
     </head>
     <body id="page-top">
@@ -222,49 +250,7 @@
                         </div>
                     </div>
 
-                    <!-- 2. Roy Character - Character -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="character">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="thumb-wrap">
-                                    <img src="assets/img/portfolio/roy_character_thumb.jpg" alt="Roy Character Design" />
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus"></i>
-                                            <span class="portfolio-hover-title">Roy & Friends</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Roy & Friends</div>
-                                <div class="portfolio-caption-subheading">Character Design</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2-1. Cheetah - Character -->
-                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="character">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal18">
-                                <div class="thumb-wrap">
-                                    <img src="assets/img/portfolio/cheetah_thumb.jpg" alt="Oh My Ciabatta" />
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus"></i>
-                                            <span class="portfolio-hover-title">Oh My Ciabatta</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Oh My Ciabatta</div>
-                                <div class="portfolio-caption-subheading">Character Design</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 19. Meet My Friends - Illustration -->
+                    <!-- Meet My Friends - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal19">
@@ -285,7 +271,7 @@
                         </div>
                     </div>
 
-                    <!-- 20. Magic Summer - Illustration -->
+                    <!-- Magic Summer - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal20">
@@ -306,7 +292,7 @@
                         </div>
                     </div>
 
-                    <!-- 21. Mr. Lonely - Illustration -->
+                    <!-- Mr. Lonely - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal21">
@@ -327,7 +313,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. Alice - Storytelling -->
+                    <!-- Alice - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
@@ -348,7 +334,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. Amy - Picture Book -->
+                    <!-- Amy - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
@@ -369,7 +355,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. Squirrel - Picture Book -->
+                    <!-- Squirrel - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
@@ -390,7 +376,7 @@
                         </div>
                     </div>
 
-                    <!-- 6. Seven Ravens - Storytelling -->
+                    <!-- Seven Ravens - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
@@ -411,7 +397,7 @@
                         </div>
                     </div>
 
-                    <!-- 7. Best Friend - Picture Book -->
+                    <!-- Searching for a Best Friend - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal7">
@@ -432,7 +418,7 @@
                         </div>
                     </div>
 
-                    <!-- 8. Bad Good Manner - Picture Book -->
+                    <!-- Bad Good Manner - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal8">
@@ -453,7 +439,7 @@
                         </div>
                     </div>
 
-                    <!-- 9. Little Farter - Picture Book -->
+                    <!-- Little Farter - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal9">
@@ -474,7 +460,7 @@
                         </div>
                     </div>
 
-                    <!-- 10. Someone Bigger - Picture Book -->
+                    <!-- Someone Bigger - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal10">
@@ -495,7 +481,7 @@
                         </div>
                     </div>
 
-                    <!-- 11. Rapunzel / Concept & Mood - Storytelling -->
+                    <!-- Concept & Mood - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal11">
@@ -516,7 +502,7 @@
                         </div>
                     </div>
 
-                    <!-- 12. Rabbit & Turtle - Storytelling -->
+                    <!-- Rabbit & Turtle - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal12">
@@ -537,7 +523,7 @@
                         </div>
                     </div>
 
-                    <!-- 13. Wild Things - Storytelling -->
+                    <!-- Wild Things - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal13">
@@ -558,7 +544,7 @@
                         </div>
                     </div>
 
-                    <!-- 14. Magic Salt Mill - Storytelling -->
+                    <!-- Magic Salt Mill - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal14">
@@ -579,7 +565,7 @@
                         </div>
                     </div>
 
-                    <!-- 15. My Little Sister - Picture Book -->
+                    <!-- My Little Sister - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal15">
@@ -600,7 +586,7 @@
                         </div>
                     </div>
 
-                    <!-- 16. Nina - Picture Book -->
+                    <!-- Nina - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal16">
@@ -621,7 +607,7 @@
                         </div>
                     </div>
 
-                    <!-- 17. Don't cry - Picture Book -->
+                    <!-- Don't cry - Illustration -->
                     <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="illustration">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal17">
@@ -638,6 +624,48 @@
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Don't cry, just speak up</div>
                                 <div class="portfolio-caption-subheading">Illustration Work</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Roy & Friends - Character (끝에서 2번째) -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="character">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/roy_character_thumb.jpg" alt="Roy Character Design" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Roy & Friends</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Roy & Friends</div>
+                                <div class="portfolio-caption-subheading">Character Design</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Oh My Ciabatta - Character (마지막) -->
+                    <div class="col-lg-4 col-sm-6 mb-4 portfolio-col" data-category="character">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal18">
+                                <div class="thumb-wrap">
+                                    <img src="assets/img/portfolio/cheetah_thumb.jpg" alt="Oh My Ciabatta" />
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="portfolio-hover-title">Oh My Ciabatta</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Oh My Ciabatta</div>
+                                <div class="portfolio-caption-subheading">Character Design</div>
                             </div>
                         </div>
                     </div>
