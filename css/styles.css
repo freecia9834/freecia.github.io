@@ -11485,17 +11485,21 @@ html[data-bs-theme="dark"] #mainNav.navbar-shrink .nav-link,
 }
 
 
-/* 1. 기본 설정: 모든 모달 이미지는 최대 1200px까지 허용 (가로 그림용) */
+/* 1. 기본 설정: 모든 모달 이미지 */
 .portfolio-modal .modal-body img.img-fluid {
-    max-width: 1200px !important; 
+    max-width: 100% !important;
+    max-height: 1100px !important;
+    width: auto !important;
+    height: auto !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    width: 100%;
-    height: auto;
-    display: block;
+    display: block !important;
 }
 
-/* 2. 세로 그림 전용: HTML에서 class="v-img"를 추가한 이미지방 700px로 제한 */
+/* 2. v-img 클래스 이미지 */
 .portfolio-modal .modal-body img.v-img {
-    max-width: 1100px !important;
+    max-width: 100% !important;
+    max-height: 1100px !important;
+    width: auto !important;
+    height: auto !important;
 }
