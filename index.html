@@ -152,10 +152,20 @@
                 display: none;
             }
 
-            /* 모달 너비 1100px로 확장 */
+            /* 모달 너비 1100px로 확장 + 가운데 정렬 */
             .portfolio-modal .modal-dialog {
                 max-width: 1100px !important;
                 width: 95vw;
+                margin: 1.75rem auto !important;
+            }
+
+            /* 모달 이미지 — 가로/세로 중 긴 쪽 기준 1100px */
+            .portfolio-modal .v-img {
+                max-width: 100% !important;
+                max-height: 1100px !important;
+                width: auto !important;
+                height: auto !important;
+                object-fit: contain;
             }
 
             /* 모달 내부 버튼 — 카테고리 필터 버튼과 동일한 스타일 */
@@ -1210,6 +1220,8 @@
             <p class="item-intro text-muted mb-5">Illustration Work</p>
             <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/mr_lonely_1.jpg" alt="Mr. Lonely 1" /></div>
             <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/mr_lonely_2.jpg" alt="Mr. Lonely 2" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/mr_lonely_3.jpg" alt="Mr. Lonely 3" /></div>
+            <div class="mb-5"><img class="img-fluid v-img d-block mx-auto" src="assets/img/portfolio/mr_lonely_4.jpg" alt="Mr. Lonely 4" /></div>
             <div class="row justify-content-center mt-5"><div class="col-lg-8">
                 <div class="d-flex justify-content-center gap-3">
                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"><i class="fas fa-times me-1"></i>Close Project</button>
